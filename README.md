@@ -1,4 +1,6 @@
-## Welcome to GitHub Pages
+## Welcome on my GitHub Page
+
+I'm a mathematics student at the University of Trento. I will post here some stuff I like.
 
 You can use the [editor on GitHub](https://github.com/giacomoborin/giacomoborin.github.io/edit/main/README.md) to maintain and preview the content for your website in Markdown files.
 
