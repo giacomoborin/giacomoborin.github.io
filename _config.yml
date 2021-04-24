@@ -1,4 +1,5 @@
 theme: jekyll-theme-midnight
 title: Giacomo Borin, Personal page
 description: Mathematics is like God, perfect and infinite, with the difference that at least about God we have understood something.
-is_project_page: false
+github:
+  is_project_page: false
