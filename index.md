@@ -4,9 +4,14 @@
 
 I'm a mathematics student at the University of Trento. I will post here some stuff I like.
 
-### Works
-Here I post some of my personal works and papers, feel free to use them if you need.
+### Curiculum Vitae
 
+* Here there is my CV in Europass format: <a href="https://giacomoborin.github.io/Resume-CV/EuropassCV_giacomoborin.pdf"> Curriculum Vitae </a> (🇬🇧).
+* You can find my europass at this <a href="https://europa.eu/!Bn66rR"> link </a> (🇬🇧). [The link will be valid until 9/11/2021, message me if it is expired and you need it]
+
+
+### Works
+Here I post some of my personal works and papers, feel free to use them if you want.
 
 
 * This is a work about Coxeter Groups and their representation, done for the *Percorso Eccellenza della Laurea Triennale* (Path to excellence for the Bachelor degree) :  <a href="https://giacomoborin.github.io/works/PEM/PEM_coxeter.pdf" target="_blank"> Gruppi di Coxeter </a> (🇮🇹)  
