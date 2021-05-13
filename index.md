@@ -11,7 +11,7 @@ I'm a mathematics student at the University of Trento. I will post here some stu
 
 
 ### Works
-Here I post some of my personal works and papers, feel free to use them if you need.
+Here I post some of my personal works and papers, feel free to use them if you want.
 
 
 * This is a work about Coxeter Groups and their representation, done for the *Percorso Eccellenza della Laurea Triennale* (Path to excellence for the Bachelor degree) :  <a href="https://giacomoborin.github.io/works/PEM/PEM_coxeter.pdf" target="_blank"> Gruppi di Coxeter </a> (🇮🇹)  
