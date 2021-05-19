@@ -13,8 +13,11 @@ I'm a mathematics student at the University of Trento. I will post here some stu
 ### Works
 Here I post some of my personal works and papers, feel free to use them if you want.
 
-* A custom beamer theme for the Math Department in Università di Trento (*unofficial*) :  <a href="https://github.com/giacomoborin/Beamer-Theme" > Theme page </a>
 * A rielaboration of a Greither article, done for the *Percorso Eccellenza della Laurea Triennale* (Path to excellence for the Bachelor degree) :
+Greither generalised the work of other mathematichans.  
+The work is composed with an article that starts with all the theory required, from and undergraduate point of view, then it explain the Greither work and in the end show some implementations of the computations. Then there is a jupyter file that show the Sagemath code and a beamer presentation (in italian). 
+* A custom beamer theme for the Math Department in Università di Trento (*unofficial*) :  <a href="https://github.com/giacomoborin/Beamer-Theme" > Theme page </a>
+Now the theme is in a testing phase and we are looking for eventual bugs and issues to fix them. 
 * This is a work about Coxeter Groups and their representation, done for the *Percorso Eccellenza della Laurea Triennale* (Path to excellence for the Bachelor degree) :  <a href="https://giacomoborin.github.io/works/PEM/PEM_coxeter.pdf" target="_blank"> Gruppi di Coxeter </a> (🇮🇹)  
 It starts with some exercises about Lie Groups (not very interesting) and then some theory about Coxeter Groups (seing their representation as matrices or diagrams). Also there are the decription of the Weil Groups, focusing on their visualization as symmetries of a roots system (sets of vectors with particular properties). In the end there is an example of application for classification of semisimple Lie groups.
 * A brief introduction to Tensors, done for the *Percorso Eccellenza della Laurea Triennale* (Path to excellence for the Bachelor degree) :  <a href="https://giacomoborin.github.io/works/PEM/PEM_introduzione_tensori.pdf" target="_blank">Tensori e prodotto tensoriale</a> (🇮🇹)  
