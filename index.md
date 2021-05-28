@@ -7,7 +7,7 @@ I'm a mathematics student at the University of Trento. I will post here some stu
 ### Curiculum Vitae
 
 * Here there is my CV in Europass format: <a href="https://giacomoborin.github.io/Resume-CV/EuropassCV_giacomoborin.pdf"> Curriculum Vitae </a> (🇬🇧).
-* You can find my europass at this <a href="https://europa.eu/!jC34Ck"> link </a> (🇬🇧). [The link will be valid until 9/11/2021, message me if it is expired and you need it]
+* You can find my europass at this <a href="https://europa.eu/!rX84kV"> link </a> (🇬🇧). [The link will be valid until 24/11/2021, message me if it is expired and you need it]
 
 
 ### Works
