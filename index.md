@@ -1,5 +1,3 @@
-## The page is not ready, this is only a *beta* version 🛠
-
 ## Welcome on my GitHub Page
 
 I'm a mathematics student at the University of Trento. I will post here some stuff I like.
@@ -15,7 +13,7 @@ Here I post some of my personal works and papers, feel free to use them if you w
 
 * A rielaboration of a Greither article, done for the *Percorso Eccellenza della Laurea Triennale* (Path to excellence for the Bachelor degree) : <a href="https://github.com/giacomoborin/PEM_Greither"> Project repository </a>.  
 Greither generalised the work of other mathematichans, finding a subgroup of the unit group $E_K$ (where $K$ is the maximal real subfield of the $n$-th Cyclotomic field) with an optimal index $[E_K:C_\beta]$. The instrument used are both from Computational algebra, Galois theory and Number Theory.  
-The work is composed with an <a href="https://giacomoborin.github.io/works/PEM/Greither_unit_index.pdf"> article </a> (🇬🇧) that starts with all the theory required, from an undergraduate point of view, then it explain the Greither work and in the end show some implementations of the computations, using Sagemath with a jupyter file (<a href="https://giacomoborin.github.io/works/PEM/Greither_unit_index.ipynb"> jupyter file </a> and <a href="https://giacomoborin.github.io/works/PEM/Greither_unit_index.html"> output on html </a>). Since I will present the work to other students there is also a beamer <a href="https://giacomoborin.github.io/works/PEM/Greither_unit_index.pres.pdf"> presentation </a> (🇮🇹). 
+The work is composed with an <a href="https://giacomoborin.github.io/works/PEM/Greither_unit_index.pdf"> article </a> (🇬🇧) that starts with all the theory required, from an undergraduate point of view, then it explain the Greither work and in the end show some implementations of the computations, using Sagemath with a jupyter file (<a href="https://giacomoborin.github.io/works/PEM/Greither_unit_index.ipynb"> jupyter file </a> and <a href="https://giacomoborin.github.io/works/PEM/Greither_unit_index.html"> output on html </a>). Since I will present the work to other students there is also a beamer <a href="https://giacomoborin.github.io/works/PEM/Greither_unit_index_pres.pdf"> presentation </a> (🇮🇹). 
 * A custom beamer theme for the Math Department in Università di Trento (*unofficial*) :  <a href="https://github.com/giacomoborin/Beamer-Theme" > Theme page </a>.  
 Now the theme is in a testing phase and we are looking for eventual bugs and issues to fix them. 
 * This is a work about Coxeter Groups and their representation, done for the *Percorso Eccellenza della Laurea Triennale* (Path to excellence for the Bachelor degree) :  <a href="https://giacomoborin.github.io/works/PEM/PEM_coxeter.pdf" target="_blank"> Gruppi di Coxeter </a> (🇮🇹)  
