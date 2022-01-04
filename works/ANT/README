@@ -1,0 +1,11 @@
+This folder contains three files:
+- pairings.sage contains only the functions necessary to evaluate the pairings
+- Weil_and_Tate_Pairings.ipynb is jupyter notebook that contains all the functions ordered in a meaningful way with also some test and the possibility to try actively the script
+- Weil_and_Tate_Pairngs.html is an html version (view only) of the notebook
+
+To open the jupyter notebook (supposing it to be installed) you need to execute:
+sage -n jupyter
+on the command line and navigate to the file through the UI.
+
+Kind regards,
+Giacomo Borin
