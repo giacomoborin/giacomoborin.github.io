@@ -1,6 +1,6 @@
-## Welcome on my GitHub Page
+## Giacomo Borin personal page
 
-I'm a mathematics student at the University of Trento. I will post here some stuff I like.
+Hi! I'm a mathematics student at the University of Trento. I will post here some stuff I like.  
 
 ### Curiculum Vitae
 
@@ -11,6 +11,7 @@ I'm a mathematics student at the University of Trento. I will post here some stu
 ### Works
 Here I post some of my personal works and papers, feel free to use them if you want.
 
+* Weil and Tate pairings implementation in Sagemath : a simple project, done for the course *Advanced Number Theory*; here the <a href="https://giacomoborin.github.io/works/ANT/Weil_and_Tate_Pairngs.ipynb">jupyter notebook</a> with the code and the <a href="https://giacomoborin.github.io/works/ANT/Weil_and_Tate_Pairngs.html">html output</a>.
 * **Bachelor's Thesis**: *The Containment Problem, a general introduction and the particular case for Steiner systems* (<a href="https://giacomoborin.github.io/works/bachelor/borin_elab_fin_digital.pdf">article in digital version</a> and <a href="https://giacomoborin.github.io/works/bachelor/borin_elab_fin_pres.pdf">beamer slideshow</a> (🇬🇧))  
 The Containment problem is an open sector of research that focuses on the behaviour of symbolic powers of ideals in relation to the normal powers and touches several disciplines, in particular Algebraic Geometry and Commutative Algebra, but also Combinatorics and Graph Theory. In this essay I have introduced the problem and investigate some connections between these subjects, in particular with reference to the article <a href="https://arxiv.org/abs/2101.07168">*Steiner Configurations ideals: containment and colouring*</a> with authors Edoardo Ballico (the relator), Giuseppe Favacchio, Elena Guardo, Lorenzo Milazzo, and Abu Chackalamannil Thomas. 
 In this essay we will introduce the problem and investigate some connections between these subjects.
