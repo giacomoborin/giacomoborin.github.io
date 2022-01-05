@@ -35,3 +35,7 @@ github:
 markdown: kramdown
 kramdown:
     math_engine: mathjax
+
+plugins:
+  - jekyll-paginate
+  - jekyll-sitemap
