@@ -9,34 +9,30 @@ redirect_from:
 
 {% include base_path %}
 
-Education
+Education 🎓
 ======
-* B.S. in GitHub, GitHub University, 2012
-* M.S. in Jekyll, GitHub University, 2014
-* Ph.D in Version Control Theory, GitHub University, 2018 (expected)
+* B.S. in Mathematics, University of Trento, 2017 to 2021
+* M.S. in Mathematics, curricula in Cryptography, University of Trento, 2021 to 2023
+* Ph.D in Mathematics, University of Zurich, 2023 to now 
 
-Work experience
+Work experience ⛑️
 ======
-* Summer 2015: Research Assistant
-  * Github University
-  * Duties included: Tagging issues
-  * Supervisor: Professor Git
+* from Nov 2023: Pre Doc Researcher (**Current Position**)
+  * IBM Research Zurich
+  * Supervisor: Luca De Feo
+  * Group: Foundations of Cryptography
 
-* Fall 2015: Research Assistant
-  * Github University
-  * Duties included: Merging pull requests
-  * Supervisor: Professor Hub
+* Summer 2023: Research Internship
+  * DNAalgo
+  * Topic: studying capacity of DNA storage channel
+
+* Summer 2023: Graduate Teaching Assistant
+  * University of Trento
+  * Courses: Linear Algebra & Calculus I
+  * Departments: Math & Physics
   
-Skills
-======
-* Skill 1
-* Skill 2
-  * Sub-skill 2.1
-  * Sub-skill 2.2
-  * Sub-skill 2.3
-* Skill 3
 
-Publications
+Publications 📝
 ======
   <ul>{% for post in site.publications %}
     {% include archive-single-cv.html %}
@@ -48,12 +44,9 @@ Talks
     {% include archive-single-talk-cv.html %}
   {% endfor %}</ul>
   
-Teaching
+Teaching 📗
 ======
   <ul>{% for post in site.teaching %}
     {% include archive-single-cv.html %}
   {% endfor %}</ul>
   
-Service and leadership
-======
-* Currently signed in to 43 different slack teams
