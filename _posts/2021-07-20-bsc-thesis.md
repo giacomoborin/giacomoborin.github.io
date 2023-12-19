@@ -1,5 +1,5 @@
 ---
-title: 'Bachelor's Thesis'
+title: 'Bachelor Thesis'
 date: 2021-08-14
 permalink: /posts/2021/07/bsc-thesis/
 tags:
