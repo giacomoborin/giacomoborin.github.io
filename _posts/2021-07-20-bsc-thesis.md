@@ -1,7 +1,7 @@
 ---
 title: 'Bachelor's Thesis'
 date: 2021-08-14
-permalink: /posts/2021-07-20-bsc-thesis
+permalink: /posts/2021/07/bsc-thesis
 tags:
   - thesis
   - abstract-algebra
