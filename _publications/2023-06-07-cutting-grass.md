@@ -4,7 +4,7 @@ collection: publications
 permalink: /publication/2009-10-01-paper-title-number-1
 excerpt: 'Threshold signature from generic group action derived signatures'
 date: 2023-06-07
-venue: '_Cryptology ePrint Archive_'
+venue: '<i>Cryptology ePrint Archive</i>'
 paperurl: 'https://eprint.iacr.org/2023/859'
 citation: 'Battagliola, Michele, Giacomo Borin, Alessio Meneghetti, and Edoardo Persichetti. "Cutting the GRASS: Threshold GRoup Action Signature Schemes." _Cryptology ePrint Archive_ (2023).'
 ---
