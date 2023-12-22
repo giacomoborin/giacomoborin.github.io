@@ -1,6 +1,6 @@
 ---
 title: "BeUnitn"
-excerpt: "A custom beamer theme for the Math Department in Università di Trento (*unofficial*)."
+excerpt: "A custom beamer theme for the Math Department in Università di Trento (<i>unofficial</i>). <br/><img src='/images/500x300.png'>"
 collection: portfolio
 ---
 
