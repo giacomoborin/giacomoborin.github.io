@@ -1,7 +1,7 @@
 ---
 title: "BeUnitn"
 date: 2021-04-21
-excerpt: "A custom beamer theme for the Math Department in Università di Trento (<i>unofficial</i>). <br/><br/> <img width = '500px', src='/images/beunitn.png'>"
+excerpt: "A custom beamer theme for the Math Department in Università di Trento (<i>unofficial</i>). <br/><br/> <img width = '500px' src='/images/beunitn.png'>"
 collection: portfolio
 ---
 
