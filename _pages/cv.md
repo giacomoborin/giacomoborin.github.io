@@ -11,20 +11,20 @@ redirect_from:
 
 Education 🎓
 ------
-* B.S. in Mathematics, University of Trento, 2017 to 2021
-* M.S. in Mathematics, curricula in Cryptography, University of Trento, 2021 to 2023
-* Ph.D in Mathematics, University of Zurich, 2023 to now 
+* B.S. in Mathematics, [University of Trento](https://www.maths.unitn.it), 2017 to 2021
+* M.S. in Mathematics, curricula in [Cryptography](https://www.maths.unitn.it/109/laboratorio-di-matematica-industriale-e-crittografia), University of Trento, 2021 to 2023
+* Ph.D in Mathematics, [University of Zurich](https://www.math.uzh.ch/aa/), 2023 to now 
 
 Work experience ⛑️
 ------
 * from Nov 2023: Pre Doc Researcher (**Current Position**)
-  * IBM Research Zurich
-  * Supervisor: Luca De Feo
+  * [IBM Research Zurich](https://www.zurich.ibm.com)
+  * Supervisor: [Luca De Feo](https://defeo.lu)
   * Group: Foundations of Cryptography
 
 * Summer 2023: Research Internship
-  * DNAalgo
-  * Topic: studying capacity of DNA storage channel
+  * [DNAalgo](https://dnaalgo.com)
+  * Topic: studying [capacity of DNA storage channel](https://giacomoborin.github.io/files/master/DNA_capacity_2023.pdf)
 
 * Summer 2023: Graduate Teaching Assistant
   * University of Trento
@@ -49,4 +49,5 @@ Teaching 📗
   <ul>{% for post in site.teaching %}
     {% include archive-single-cv.html %}
   {% endfor %}</ul>
-  
+
+
