@@ -1,5 +1,5 @@
 ---
-title: "MSC Thesis"
+title: "BSC Thesis"
 date: 2023-10-20
 excerpt: "Cryptographic Group Actions and
 Digital Signatures, <br/>
