@@ -26,7 +26,7 @@ Work experience ⛑️
   * [DNAalgo](https://dnaalgo.com)
   * Topic: studying [capacity of DNA storage channel](https://giacomoborin.github.io/files/master/DNA_capacity_2023.pdf)
 
-* Summer 2023: Graduate Teaching Assistant
+* 2021 to 2022: Graduate Teaching Assistant
   * University of Trento
   * Courses: Linear Algebra & Calculus I
   * Departments: Math & Physics
