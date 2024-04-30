@@ -64,15 +64,15 @@ With respect to the **Signature Generation** by using some additional rounds and
 Also, as an interesting corollary, this additional randomness can be used to prove the security in the QROM model.
 
 ## Instantiations
-To give a practical outlook on our constructions, we instantiate them with the LESS and MEDS frameworks, which are two flavors of code-based cryptographic group actions. Also we showed that almost all the optimizations already proposed for the signatures can be adapted also to the multiparty case, gaining usable and efficient schemes. As a proof of concept we report here the results for the thresholdization of MEDS (parameters from [version 1.1](https://www.meds-pqc.org/spec/MEDS-2023-07-26.pdf)):
+To give a practical outlook on our constructions, we instantiate them with the LESS and MEDS frameworks, which are two flavors of code-based cryptographic group actions. Also we showed that almost all the optimizations already proposed for the signatures can be adapted also to the multiparty case, gaining usable and efficient schemes. As a proof of concept we report here the results in $\mathsf{KiB}$ and $\mathsf{MiB}$ for the thresholdization of MEDS (parameters from [version 1.1](https://www.meds-pqc.org/spec/MEDS-2023-07-26.pdf)):
 
-| Case                                      | Variant                 | $t$   | $\omega$ | $r$ | $|\mathsf{pk}|$ ($\mathsf{KiB}$) | $|\mathsf{sig}|$ ($\mathsf{KiB}$) | Exc. ($\mathsf{MiB}$)          |
+| Case  | Variant | $t$ | $\omega$ | $r$ | $\mathsf{pk}$ size  | $\mathsf{sig}$ size | Exc. cost  |
 |-------------------------------------------|-------------------------|-------|----------|-----|----------------------------------|-----------------------------------|--------------------------------|
-| MEDS-13220                                | Fixed+Multibit                     | 192   | 20       | 5   | 13.2                             | 13.0                              | -                              |
-| (2,3)                                     | Fixed+Multibit                     | 291   | 19       | 4   | 11.26                            | 14.49                             | 3.24                           |
-| (3,5)                                     | Fixed+Multibit                     | 113   | 22       | 6   | 18.76                            | 20.80                             | 4.34                           |
-| (*,*)                                     | Multibit                       | -     | -        | 8   | 26.24                            | 24.74                             | $\binom{N}{T-1}$0.182          |
-| Section 8 of MEDS specs      | Multibit                       | -     | -        | 3   | 7.50                             | 3.37                              | $\binom{N}{T-1}$0.342          |
+| MEDS-13220                                | Fixed+Multibit | 192   | 20       | 5   | 13.2                             | 13.0                              | -                              |
+| (2,3)                                     | Fixed+Multibit | 291   | 19       | 4   | 11.26                            | 14.49                             | 3.24                           |
+| (3,5)                                     | Fixed+Multibit | 113   | 22       | 6   | 18.76                            | 20.80                             | 4.34                           |
+| $(\circ,\circ)$   | Multibit       | -     | -        | 8   | 26.24    | 24.74   | $\binom{N}{T-1} 0.182 $          |
+| Section 8 of MEDS specs      | Multibit                       | -     | -        | 3   | 7.50                             | 3.37                              | $\binom{N}{T-1} 0.342$          |
 
 
 
