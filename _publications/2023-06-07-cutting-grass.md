@@ -29,7 +29,7 @@ For any group action $\star : G \times X \to X$ we can always define a digital s
 </p>
 The core idea of the $\Sigma$ protocol is that the verifier produces a new ephemeral set element $\tilde{x} = \tilde{g}\star x$, then showing *or* the full black arrow ($\tilde{g}$) *or* the gray dashed one ($\tilde{g}g^{-1}$), but *never* both of them together.   
 
-When considering the exponentiation on a cyclic group we get the core idea behind the Schnorr signature, however, luckily for post-quantum cryptography, several new group actions are emerging from which we can also define digital signatures, for example from isogenies of ellyptic curves or equivalence of linear codes or tensors. 
+When considering the exponentiation on a cyclic group we get the core idea behind the Schnorr signature, however, luckily for post-quantum cryptography, several new group actions are emerging from which we can also define digital signatures, for example from isogenies of ellyptic curves or equivalence of linear codes or tensors. More on the design of these signatures can be read [here](https://giacomoborin.github.io/publication/2024-03-09-grass).
 
 ### MPC of a Group Action
 It is clear that multiple parties having access to additive shares $x_1,x_2,...,x_N$ of $x = \sum x_i$ can compute the exponentiation $g^x$ by multiplying the exponentiation of their shares $g^{x_1} \cdot g^{x_2} \cdots g^{x_N} = g^{\sum x_i}$. This idea can be adapted to use also any kind of LSSS. 
@@ -42,7 +42,7 @@ note that the computations are sequential and if $G$ is **non-commutative** the 
 # Contributions
 In this work, we show that isomorphism problems which stem from cryptographic group actions, can be viable building blocks for threshold signature schemes. In particular, we construct a full $N$-out-of-$N$ threshold signature scheme, and discuss the efficiency issues arising from extending it to the generic $T$-out-of-$N$ case. 
 
-For *abelian* group actions (i.e. CSIFiSh and SCALLOP as of today) the community already explored several combinations of techniques to obtain secure distributed key and signature generation, however the protocols employed usually strongly rely in the commutativity of the group or make the resulting primitive mostly unpractical because of eccessive use of NIZKPs.
+For *abelian* group actions (i.e. CSIFiSh and SCALLOP as of today) the community already explored several combinations of techniques to obtain secure [distributed key](https://doi.org/10.1007/978-3-030-81293-5_14) and [signature](https://doi.org/10.1007/978-3-030-44223-1_10) [generation](https://doi.org/10.1007/978-3-030-45388-6_7), however the protocols employed usually strongly rely in the commutativity of the group or make the resulting primitive mostly unpractical because of eccessive use of NIZKPs.
 
 ## The Non-Abelian Case
 In the paper we showed how the core ideas of multiparty computation can still be used to define a threshold scheme, in fact the triangular diagram from before can still be computed by multiple users in a recursive flavour:
@@ -50,15 +50,29 @@ In the paper we showed how the core ideas of multiparty computation can still be
 <img width="615" alt="image" src="https://github.com/giacomoborin/giacomoborin.github.io/assets/64214430/c9dc3255-92b3-4191-8097-142e5e968557">
 </p>
 
-## Security of the Scheme
-We showed that:
-* a secure Distributed Key Generation can be achieved by adapting known *ad-hoc* crafted ZKPs, but this requires an additional security assumption;
-* by using some additional rounds and secure randomness (also called salt) we can achieve security against malicious users without intensive ZKPs;
-* also this additional randomness can be used to prove the security in the QROM model.
+This natural and naive $N$-out-of-$N$ scheme can be rendered to an $T$-out of-$N$ threshold protocol by using *Replicated Secret Sharing*. This create a clear trade off between the simplicity of the construction and an exponential increase of communication cost between the parties. However, since the most important use cases like $(2,3)$ or $(3,5)$ have small $T,N$, we still get efficient threshold signatures. 
 
-Finally by using *Replicated Secret Sharing* we can render the protocol $T$-out of-$N$.
+
+## Security of the Scheme
+With respect to this we showed that a secure **Distributed Key Generation** can be achieved by adapting known *ad-hoc* crafted ZKPs, but this requires to send two parallel pairs of elements:
+$$ x_1 \xrightarrow{g \ \star} {y}_1 \text{ and } x_2 \xrightarrow{g \ \star} {y}_2 \ ;$$
+so we require as additional security assumption that this additional pair does not help the recover of the secret $g$.   
+
+*Remark*: recently it has been showed that for some particular instances of hamming code equivalence for specific choice of parameters this addidiotional pair can be used to recover the secret monomial map, however in the appendix we proposed a possible workaround, even if this new technique need further inspections.  
+
+With respect to the **Signature Generation** by using some additional rounds and secure randomness (also called `salt`) we can achieve security against malicious users without intensive ZKPs, differently from previous research directions. 
+Also, as an interesting corollary, this additional randomness can be used to prove the security in the QROM model.
 
 ## Instantiations
-To give a practical outlook on our constructions, we instantiate them with the LESS and MEDS frameworks, which are two flavors of code-based cryptographic group actions. 
+To give a practical outlook on our constructions, we instantiate them with the LESS and MEDS frameworks, which are two flavors of code-based cryptographic group actions. Also we showed that almost all the optimizations already proposed for the signatures can be adapted also to the multiparty case, gaining usable and efficient schemes. As a proof of concept we report here the results for the thresholdization of MEDS (parameters from [version 1.1](https://www.meds-pqc.org/spec/MEDS-2023-07-26.pdf)):
+
+| Case                                      | Variant                 | $t$   | $\omega$ | $r$ | $|\mathsf{pk}|$ ($\mathsf{KiB}$) | $|\mathsf{sig}|$ ($\mathsf{KiB}$) | Exc. ($\mathsf{MiB}$)          |
+|-------------------------------------------|-------------------------|-------|----------|-----|----------------------------------|-----------------------------------|--------------------------------|
+| MEDS-13220                                | F+M                     | 192   | 20       | 5   | 13.2                             | 13.0                              | -                              |
+| (2,3)                                     | F+M                     | 291   | 19       | 4   | 11.26                            | 14.49                             | 3.24                           |
+| (3,5)                                     | F+M                     | 113   | 22       | 6   | 18.76                            | 20.80                             | 4.34                           |
+| (*,*)                                     | M                       | -     | -        | 8   | 26.24                            | 24.74                             | $\binom{N}{T-1}$0.182          |
+| Section 8 of MEDS specs      | M                       | -     | -        | 3   | 7.50                             | 3.37                              | $\binom{N}{T-1}$0.342          |
+
 
 
