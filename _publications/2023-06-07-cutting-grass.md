@@ -35,7 +35,7 @@ When considering the exponentiation on a cyclic group we get the core idea behin
 It is clear that multiple parties having access to additive shares $x_1,x_2,...,x_N$ of $x = \sum x_i$ can compute the exponentiation $g^x$ by multiplying the exponentiation of their shares $g^{x_1} \cdot g^{x_2} \cdots g^{x_N} = g^{\sum x_i}$. This idea can be adapted to use also any kind of LSSS. 
 It is folklore that using multiplicative shares $ g = g_1 \cdot g_2 \cdots g_N$ we can do the same with any group actions:
 
-$$ x \xrightarrow{g_1 \ \star} {x}_1 \xrightarrow{{g}_2 \ \star} \ldots \xrightarrow{{g}_N \ \star} {x}_N = y \ ,$$
+$$ x \xrightarrow{g_1 \ \star} {x}_1 \xrightarrow{{g}_2 \ \star} \ldots \xrightarrow{ g_N \ \star } {x}_N = y \ ,$$
 
 note that the computations are sequential and if $G$ is **non-commutative** the order matters. This procedure can be employed, for example, to obtain a **Distributed Key Generation** for $\star$ between $N$ users.
 
