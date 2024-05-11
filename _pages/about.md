@@ -12,6 +12,7 @@ Hello, I'm Giacomo. I have a keen interest in Algebra, Cryptography, and Python,
 
 My mathematical pursuits primarily revolve around isogenies and isomorphism problems associated with coding theory. The objective of my research is to leverage these mathematical tools to establish innovative functionalities for cryptographic schemes based on quantum-resistant assumptions.
 
+**Discalimer**: _opinions are my own_.
 
 The Zero Knowledge Prophecy 
 ------
