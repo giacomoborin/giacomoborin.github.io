@@ -84,13 +84,13 @@ analytics:
 
 # Site Author
 author:
-  name             : "Your Sidebar Name"
-  avatar           : "profile.png"
-  bio              : "Your biography for the left-hand sidebar"
-  location         : "Location"
+  name             : "Giacomo Borin"
+  avatar           : "profile.jpg"
+  bio              : "PhD student ad UZH & IBM Zurich in the Foundations of Cryptography group. I like trains and mountains 🚞"
+  location         : "Switzerland"
   employer         :
-  pubmed           : "https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
-  googlescholar    : "http://yourfullgooglescholarurl.com"
+  pubmed           :
+  googlescholar    : "https://scholar.google.com/citations?user=nuCtgRYAAAAJ&hl=en"
   email            :
   researchgate     :  # example: "https://www.researchgate.net/profile/yourprofile"
   uri              :
@@ -100,20 +100,20 @@ author:
   flickr           :
   facebook         :
   foursquare       :
-  github           : "academicpages"
+  github           : "giacomoborin"
   google_plus      :
   keybase          :
   instagram        :
   impactstory      : #"https://profiles.impactstory.org/u/xxxx-xxxx-xxxx-xxxx"
   lastfm           :
-  linkedin         :
-  orcid            : "http://orcid.org/yourorcidurl"
+  linkedin         : "giacomo-borin-crypto/"
+  orcid            : "https://orcid.org/0009-0001-7311-3802"
   pinterest        :
   soundcloud       :
   stackoverflow    : # http://stackoverflow.com/users/123456/username
   steam            :
   tumblr           :
-  twitter          : "replacethistwitterhandle"
+  twitter          : "giaborin"
   vine             :
   weibo            :
   xing             :
