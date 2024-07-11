@@ -12,6 +12,7 @@ Hello, I'm Giacomo. I have a keen interest in Algebra, Cryptography, and Python,
 
 My mathematical pursuits primarily revolve around isogenies and isomorphism problems associated with coding theory. The objective of my research is to leverage these mathematical tools to establish innovative functionalities for cryptographic schemes based on quantum-resistant assumptions.
 
+
 **Discalimer**: _opinions are my own_.
 
 The Zero Knowledge Prophecy 
@@ -26,7 +27,6 @@ Cryptographic group actions, intricate and wise,
 Weave the fabric of protection, where danger lies,   
 In graphs they dance, their steps a subtle art,   
 Guarding realms of knowledge, shielding every part.
-
 
 Through sigma protocols, our stories intertwine,  
 In this realm of signatures, where the powers align,   
