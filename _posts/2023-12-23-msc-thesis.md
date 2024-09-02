@@ -12,13 +12,19 @@ tags:
 bibliography:
   - "https://giacomoborin.github.io/files/master/thesis/biblio.bib"
 ---
-My MSC Thesis centered on Code-based post quantum signature schemes based on Cryptographic Group Actions and Code Equivalence assumptions; in particular LESS and MEDS. 
+The goal of my MSC Thesis was to study post quantum signature schemes based on Cryptographic Group Actions and Code Equivalence assumptions; with a special focus on LESS and MEDS.
 
 Supervisors: [Alessio Meneghetti](https://webapps.unitn.it/du/it/Persona/PER0126300/Didattica), [Edoardo Persichetti](https://www.persichetti.me/home) and Michele Battagliola.
 
-The digital version can be downloaded <a href="https://giacomoborin.github.io/files/master/thesis/thesis_giacomoborin_online_20231117.pdf">here</a>. 
+A digital version of the manuscript can be downloaded <a href="https://giacomoborin.github.io/files/master/thesis/thesis_giacomoborin_online_20231117.pdf">here</a>. A summary will follow later. As of now two works were derived from the thesis:
+* [*Cutting the GRASS: Threshold GRoup Action Signature Schemes*](https://giacomoborin.github.io/publication/2023-cutting-grass), with Battagliola, Michele, Giacomo Borin, Alessio Meneghetti, and Edoardo Persichetti;
+* [*A Guide to the Design of Digital Signatures based on Cryptographic Group Actions*](https://giacomoborin.github.io/publication/2024-03-09-grass), with Giacomo Borin, Edoardo Persichetti, Paolo Santini, Federico Pintore and Krijn Reijnders.
 
-**Short abstract**  
+<p align="center">
+<img width="708" alt="image" src="../images/rubik.png">
+</p>
+
+**Summary of the Thesis**  
 In our every day more digital world, cryptographic signatures serve as a vital tool to ensure data integrity, authenticity, and non-repudiation. However, due to the recent advancement in the research of quantum computers, the possible implementation of quantum algorithms like Shor’s and Grover’s ones pose an existential threat to the classical public key schemes based on integers factorization and discrete logarithm, like RSA and ECDSA. 
 
 To solve this, NIST opened a call for proposals of quantum resistant schemes, also called post-quantum cryptosystems. NIST’s standardization process has already given its first high quality schemes, but for signatures the results are not to be considered satisfactory. Thus, a new 'on ramp' call specific for signatures not based on ideal lattices has been open.
