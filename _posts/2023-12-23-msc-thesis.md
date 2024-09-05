@@ -16,7 +16,7 @@ The goal of my MSC Thesis was to study post quantum signature schemes based on C
 
 Supervisors: [Alessio Meneghetti](https://webapps.unitn.it/du/it/Persona/PER0126300/Didattica), [Edoardo Persichetti](https://www.persichetti.me/home) and Michele Battagliola.
 
-A digital version of the manuscript can be downloaded <a href="https://giacomoborin.github.io/files/master/thesis/thesis_giacomoborin_online_20231117.pdf">here</a>. A summary will follow later. As of now two works were derived from the thesis:
+A digital version of the manuscript can be downloaded <a href="https://giacomoborin.github.io/files/master/thesis/thesis_giacomoborin_online_20231117.pdf">here</a> and some slides can be found <a href="https://giacomoborin.github.io/files/slides/20240905_clusit.pdf">here</a>. A summary will follow later. As of now two works were derived from the thesis:
 * [*Cutting the GRASS: Threshold GRoup Action Signature Schemes*](https://giacomoborin.github.io/publication/2023-cutting-grass), with Battagliola, Michele, Giacomo Borin, Alessio Meneghetti, and Edoardo Persichetti;
 * [*A Guide to the Design of Digital Signatures based on Cryptographic Group Actions*](https://giacomoborin.github.io/publication/2024-03-09-grass), with Giacomo Borin, Edoardo Persichetti, Paolo Santini, Federico Pintore and Krijn Reijnders.
 
