@@ -6,7 +6,7 @@ excerpt: 'Threshold signature from generic group action derived signatures'
 date: 2023-06-07
 venue: '<i>CT-RSA 2024</i>'
 paperurl: 'https://eprint.iacr.org/2023/859'
-citation: 'Battagliola, Michele, Giacomo Borin, Alessio Meneghetti, and Edoardo Persichetti. "Cutting the GRASS: Threshold GRoup Action Signature Schemes." <i>CT-RSA</i> (2024).'
+citation: 'Battagliola, Michele, Giacomo Borin, Alessio Meneghetti, and Edoardo Persichetti. "Cutting the GRASS: Threshold GRoup Action Signature Schemes." <i>CT-RSA 2024</i>.'
 ---
 
 The paper can be [downloaded here](https://eprint.iacr.org/2023/859). We proceed here with a brief summary of the main points.
