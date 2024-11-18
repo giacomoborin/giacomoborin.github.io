@@ -9,9 +9,10 @@ paperurl: 'https://eprint.iacr.org/2023/859'
 citation: 'Battagliola, Michele, Giacomo Borin, Alessio Meneghetti, and Edoardo Persichetti. "Cutting the GRASS: Threshold GRoup Action Signature Schemes." <i>CT-RSA 2024</i>.'
 ---
 
-The paper can be [downloaded here](https://eprint.iacr.org/2023/859). We proceed here with a brief summary of the main points.
+The paper is a joint work with Michele Battagliola, Alessio Meneghetti and Edoardo Persichetti; it can be [downloaded here](https://eprint.iacr.org/2023/859) and it has been published and presented at [*CT-RSA 2024*](https://www.rsaconference.com/library/presentation/usa/2024/threshold%20signatures%20and%20fault%20attacks). We proceed here with a brief summary of the main points.
 
 ## Threshold Signatures
+
 A $T,N$-threshold digital signature scheme is a protocol designed to distribute the right to sign messages to any subset of at least $T$ out of $N$ key owners. Then, any subset of malicious users of size up to the threshold $T$ won’t be able to forge a valid signature alone. 
 
 <p align="center">
