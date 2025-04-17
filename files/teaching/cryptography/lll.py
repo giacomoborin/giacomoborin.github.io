@@ -15,6 +15,7 @@ CMAP = 'viridis'
 TEXT_COLOR = 'white'
 DURATION = 1
 CORRECTION = 0.2
+EXPORT = False
 
 def gram_schmidt(B):
     """Performs Gram-Schmidt orthogonalization on a matrix B."""
@@ -116,8 +117,9 @@ def LLL_with_out(matrix, delta=0.75, duration=DURATION):
         plt.pause(delay) 
 
     print(f"Number of iterations: {num_it}")
-    filename = f"frames/frame_{num_it:03d}.png"
-    plt.savefig(filename, bbox_inches='tight')            
+    if EXPORT: 
+        filename = f"frames/frame_{num_it:03d}.png"
+        plt.savefig(filename, bbox_inches='tight')            
     plt.ioff()  # Turn off interactive mode
     plt.show()
 
@@ -129,11 +131,11 @@ def LLL_with_out(matrix, delta=0.75, duration=DURATION):
 
 if __name__ == "__main__":
     # Knapsack instance
-    pk = [430, 138, 495, 49, 463, 196, 165]
-    cypher_text =  + 942
-    # pk = [2381, 1094, 2188, 2442, 2280, 1129, 1803, 2259, 1665]
-    # cypher_text = 7598
-    sol_type = 1
+    # pk = [430, 138, 495, 49, 463, 196, 165]
+    # cypher_text =  + 942
+    pk = [2381, 1094, 2188, 2442, 2280, 1129, 1803, 2259, 1665]
+    cypher_text = 7598
+    sol_type = 0
     if sol_type == 0:
         matrix = np.matrix(
                 [ [0]*len(pk) + [pk[i]] for i in range(len(pk)) ] +
@@ -150,18 +152,19 @@ if __name__ == "__main__":
 
     out,num_frames = LLL_with_out(matrix, delta=0.75, duration = 1)
     
-    # Load saved frames and create GIF
-    frames = [Image.open(f"frames/frame_{i:03d}.png") for i in range(num_frames+1)]
-    gif_path = "matrix_animation.gif"
-    frames[0].save(
-        gif_path,
-        save_all=True,
-        append_images=frames[1:],
-        duration=frame_duration_ms,
-        loop=0
-    )
+    if EXPORT:
+        # Load saved frames and create GIF
+        frames = [Image.open(f"frames/frame_{i:03d}.png") for i in range(num_frames+1)]
+        gif_path = "matrix_animation.gif"
+        frames[0].save(
+            gif_path,
+            save_all=True,
+            append_images=frames[1:],
+            duration=frame_duration_ms,
+            loop=0
+        )
 
-    print(f"GIF saved to {gif_path}")
+        print(f"GIF saved to {gif_path}")
 
     if sol_type == 0:
         print("Solution:")

@@ -8,7 +8,7 @@ date: 2024-03-01
 location: "Zurich, Italy"
 ---
 
-I tutored the students providing exercises in Coding Theory and solving them in exercise sections.  
+Teaching assistant for the Coding Theory course at UZH.
 
 **Professor**: Prof. Dr. Joachim Rosenthal,  
 *Teaching Assistants*: 
