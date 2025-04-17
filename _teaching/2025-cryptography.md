@@ -49,9 +49,9 @@ Here some gifs showing the use of the LLL algorithm to solve the knapsack proble
 
 **Example 0**:
 
-*weights*: $430, 138, 495, 49, 463, 196, 165$;
-*target*:  $942$;
-*solution*: $430 + 49 + 463 = 942$
+* *weights*: $430, 138, 495, 49, 463, 196, 165$;
+* *target*:  $942$;
+* *solution*: $430 + 49 + 463 = 942$
 
 ![Cryptography Gif](https://giacomoborin.github.io/files/teaching/cryptography/matrix_animation_small.gif)
 
