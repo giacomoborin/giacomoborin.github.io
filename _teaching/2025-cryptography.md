@@ -24,14 +24,14 @@ A few useful links:
 * Sagemath is a computer algebra software based on python that can be installed [here](https://doc.sagemath.org/html/en/installation/index.html) and the docs are [here](https://doc.sagemath.org/html/en/constructions/index.html).
 * Jupyter Notebook is a popular, open-source web application used for creating and sharing documents that combine live code, text, visualizations, and rich media. You can download it [here](https://jupyter.org/). If you really don't want to run it locally there are services like [Binder](https://mybinder.org/) to run it online.
 
-#### Exercise Session 04
+## Exercise Session 04
 
 *Arguments*: factorization and LFSR.
 *Script used*:
 
 * [notebook](https://giacomoborin.github.io/files/teaching/cryptography/ex04_solutions.ipynb), [online view](https://nbviewer.org/github/giacomoborin/giacomoborin.github.io/blob/master/files/teaching/cryptography/ex04_solutions.ipynb)
 
-#### Exercise Session 07
+## Exercise Session 07
 
 *Arguments*: AES key scheduling and Elliptic Curve introduction.
 *Scripts used*:
@@ -43,7 +43,7 @@ Tips:
 
 * see [hyperelliptic.org](https://hyperelliptic.org/EFD/) for a database of explicit EC formulas.
 
-#### Lesson 2025.04.17
+## Lesson 2025.04.17
 
 Here some gifs showing the use of the LLL algorithm to solve the knapsack problem. There are generated with [this](https://giacomoborin.github.io/files/teaching/cryptography/lll.py) script and inspired by [Tanja Lange lesson on LLL](https://www.youtube.com/watch?v=UU2EaVXkKLY).
 
