@@ -63,5 +63,3 @@ Here some gifs showing the use of the LLL algorithm to solve the knapsack proble
 
 ![Cryptography Gif](https://giacomoborin.github.io/files/teaching/cryptography/matrix_animation_bigger.gif)
 
-
-

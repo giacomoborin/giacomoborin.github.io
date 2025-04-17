@@ -5,17 +5,18 @@ import math
 from PIL import Image
 import os
 
-# Create a folder to store frames
-os.makedirs("frames", exist_ok=True)
-
 # Parameters
 frame_duration_ms = 200  # duration per frame in milliseconds
 
 CMAP = 'viridis'
 TEXT_COLOR = 'white'
-DURATION = 1
+DURATION = 5
 CORRECTION = 0.2
 EXPORT = False
+
+if EXPORT: # Create a folder to store frames
+    os.makedirs("frames", exist_ok=True)
+
 
 def gram_schmidt(B):
     """Performs Gram-Schmidt orthogonalization on a matrix B."""
@@ -62,10 +63,8 @@ def LLL_with_out(matrix, delta=0.75, duration=DURATION):
             t = ax.text(y, x, str(value), ha='center', va='center', color=TEXT_COLOR, fontweight='bold')
         text_objects.append(t)
 
-    plt.colorbar(img)
-
-
     plt.title("LLL Reduction")
+    plt.colorbar(img)
 
     """Performs the LLL lattice basis reduction on matrix B."""
     B = B.astype(np.float64)
@@ -76,8 +75,9 @@ def LLL_with_out(matrix, delta=0.75, duration=DURATION):
     num_it = 0
     
     while k < n:
-        filename = f"frames/frame_{num_it:03d}.png"
-        plt.savefig(filename, bbox_inches='tight')            
+        if EXPORT:
+            filename = f"frames/frame_{num_it:03d}.png"
+            plt.savefig(filename, bbox_inches='tight')            
         # Lenght reduction
         for j in reversed(range(k)):
             q = round(mu[k, j])
@@ -96,12 +96,14 @@ def LLL_with_out(matrix, delta=0.75, duration=DURATION):
             B_star, mu = gram_schmidt(B)
             k = max(k - 1, 1)
     
-        img.set_data(abs(B.T)**CORRECTION)     # Update image data
+        plt.title(f"LLL Reduction (Iteration {num_it}, k={k})")
         # Remove old text labels
         for t in text_objects:
             t.remove()
         text_objects.clear()
-        # 6. Add the integer values on top of each cell
+
+        # Add the integer values on top of each cell
+        img.set_data(abs(B.T)**CORRECTION)     # Update image data
         for (x, y), value in np.ndenumerate(B.T):
             if value == 0.0:
                 t = ax.text(y, x, '', ha='center', va='center', color=TEXT_COLOR, fontweight='bold')
@@ -112,7 +114,6 @@ def LLL_with_out(matrix, delta=0.75, duration=DURATION):
             text_objects.append(t)
         num_it += 1
 
-        plt.title(f"LLL Reduction (Iteration {num_it}, k={k})")
         plt.draw()                 
         plt.pause(delay) 
 
@@ -129,13 +130,7 @@ def LLL_with_out(matrix, delta=0.75, duration=DURATION):
     print(reduced_B.T)
     return reduced_B.T, num_it
 
-if __name__ == "__main__":
-    # Knapsack instance
-    # pk = [430, 138, 495, 49, 463, 196, 165]
-    # cypher_text =  + 942
-    pk = [2381, 1094, 2188, 2442, 2280, 1129, 1803, 2259, 1665]
-    cypher_text = 7598
-    sol_type = 0
+def gen_matrix(pk,chypher_text, sol_type):
     if sol_type == 0:
         matrix = np.matrix(
                 [ [0]*len(pk) + [pk[i]] for i in range(len(pk)) ] +
@@ -149,23 +144,9 @@ if __name__ == "__main__":
                 )
     for i in range(0, len(pk)):
         matrix[i, i] = 1
+    return matrix
 
-    out,num_frames = LLL_with_out(matrix, delta=0.75, duration = 1)
-    
-    if EXPORT:
-        # Load saved frames and create GIF
-        frames = [Image.open(f"frames/frame_{i:03d}.png") for i in range(num_frames+1)]
-        gif_path = "matrix_animation.gif"
-        frames[0].save(
-            gif_path,
-            save_all=True,
-            append_images=frames[1:],
-            duration=frame_duration_ms,
-            loop=0
-        )
-
-        print(f"GIF saved to {gif_path}")
-
+def get_solution(pk, cypher_text, out, sol_type):
     if sol_type == 0:
         print("Solution:")
         for j in range(len(pk) + 1):
@@ -187,6 +168,34 @@ if __name__ == "__main__":
                             print(f"{pk[i]} + ", end="")
                     print(f"= {cypher_text}")
 
+if __name__ == "__main__":
+    # Knapsack instance
+    # pk = [430, 138, 495, 49, 463, 196, 165]
+    # cypher_text =  + 942
+    pk = [2381, 1094, 2188, 2442, 2280, 1129, 1803, 2259, 1665]
+    cypher_text = 7598
+    sol_type = 0
+
+    matrix = gen_matrix(pk, cypher_text, sol_type)
+
+    out,num_frames = LLL_with_out(matrix, delta=0.75, duration = 1)
+    
+    if EXPORT:
+        # Load saved frames and create GIF
+        frames = [Image.open(f"frames/frame_{i:03d}.png") for i in range(num_frames+1)]
+        gif_path = "matrix_animation.gif"
+        frames[0].save(
+            gif_path,
+            save_all=True,
+            append_images=frames[1:],
+            duration=frame_duration_ms,
+            loop=0
+        )
+
+        print(f"GIF saved to {gif_path}")
+
+    get_solution(pk, cypher_text, out, sol_type)
+    
 
 
 
