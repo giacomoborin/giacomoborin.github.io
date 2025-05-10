@@ -174,11 +174,11 @@ if __name__ == "__main__":
     # cypher_text =  + 942
     pk = [2381, 1094, 2188, 2442, 2280, 1129, 1803, 2259, 1665]
     cypher_text = 7598
-    sol_type = 0
+    sol_type = 1
 
     matrix = gen_matrix(pk, cypher_text, sol_type)
 
-    out,num_frames = LLL_with_out(matrix, delta=0.75, duration = 1)
+    out,num_frames = LLL_with_out(matrix, delta=0.75, duration = 10)
     
     if EXPORT:
         # Load saved frames and create GIF
