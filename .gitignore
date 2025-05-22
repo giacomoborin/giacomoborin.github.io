@@ -17,3 +17,5 @@ package-lock.json
 files/teaching/cryptography/factorization_demo.ipynb
 files/teaching/cryptography/frames*
 files/teaching/cryptography/matrix_animation.gif
+_posts/out.html
+_posts/out.pdf
