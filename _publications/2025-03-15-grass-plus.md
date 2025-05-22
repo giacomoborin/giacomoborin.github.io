@@ -6,7 +6,7 @@ excerpt: 'Improvements on threshold signature from generic group action'
 date: 2025-03-15
 venue: '<i>PQCrypto 2025</i>'
 paperurl: 'https://eprint.iacr.org/2025/085'
-citation: 'Battagliola, M., Borin, G., Di Crescenzo, G., Meneghetti, A., Persichetti, E. (2025). Enhancing Threshold Group Action Signature Schemes: Adaptive Security and Scalability Improvements. <i> Post-Quantum Cryptography. PQCrypto 2025. </i> Lecture Notes in Computer Science, vol 15577. Springer, Cham. https://doi.org/10.1007/978-3-031-86599-2_5'
+citation: 'Battagliola, M., Borin, G., Di Crescenzo, G., Meneghetti, A., Persichetti, E. (2025). Enhancing Threshold Group Action Signature Schemes: Adaptive Security and Scalability Improvements. <i> Post-Quantum Cryptography. PQCrypto 2025. </i> <a href="https://doi.org/10.1007/978-3-031-86599-2_5"> doi.org/10.1007/978-3-031-86599-2_5</a>.'
 ---
 
 ### Abstract
