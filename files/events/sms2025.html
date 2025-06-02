@@ -57,7 +57,32 @@
       font-style: italic;
       color: #333;
     }
+    .day h2 {
+        cursor: pointer;
+        position: relative;
+    }
+
+    .day h2::after {
+        content: "🔽";
+        position: absolute;
+        right: 0;
+        font-size: 0.8em;
+        transition: transform 0.2s;
+    }
+
+    .day.collapsed h2::after {
+        transform: rotate(-90deg);
+    }
   </style>
+  <script>
+      function toggleDayContent(header) {
+          const dayDiv = header.parentElement;
+          const content = header.nextElementSibling;
+          const isHidden = content.style.display === "none";
+          content.style.display = isHidden ? "block" : "none";
+          dayDiv.classList.toggle("collapsed", !isHidden);
+      }
+  </script>
 </head>
 
 <body>
@@ -68,7 +93,8 @@
 
   <!-- Monday -->
   <div class="day">
-      <h2>Monday</h2>
+      <h2 onclick="toggleDayContent(this)">Monday</h2>
+      <div class="day-content">
       <div class="event"><span class="time">08:30</span> - 
 Registration 
           Opens</div>
@@ -110,11 +136,13 @@ Opening Speech</div>
     Schemes for Lattice-Based Threshold Cryptography</span></div>
     <div class="event"><span class="time">17:35</span> - 
 Apero</div>
+      </div>
   </div>
 
   <!-- Tuesday -->
   <div class="day">
-    <h2>Tuesday</h2>
+    <h2 onclick="toggleDayContent(this)">Tuesday</h2>
+    <div class="day-content">
     <div class="event"><span class="time">09:15</span> - 
 <span class="speaker">Simona Samardjiska:</span> <span class="talk">On equivalence problems, minimal keys and digital signatures</span></div>
     <div class="event"><span class="time">10:15</span> - 
@@ -138,11 +166,13 @@ Hull Attacks on the Code Equivalence Problem</span></div>
 <span class="speaker">Andre Esser:</span> <span class="talk">Solving Code Equivalence via Codeword Search</span></div>
     <div class="event"><span class="time">17:35</span> - 
   <span class = "speakerct"> Alan Szepieniec: </span> <span class ="talk"> Overview of Post-Quantum Cryptography in Neptune Cash</span></div>
+    </div>
   </div>
 
   <!-- Wednesday -->
   <div class="day">
-      <h2>Wednesday</h2>
+      <h2 onclick="toggleDayContent(this)">Wednesday</h2>
+      <div class="day-content">
       <div class="event"><span class="time">09:15</span> - 
 <span 
               class="speaker">Alessio Caminata:</span> <span 
@@ -183,10 +213,12 @@ Imperfect Randomness Harms Lattice Signatures</span></div>
     <div class="event"><span class="time">19:00</span> - 
         🍽️ <a href="https://lake-side.ch/en/"> Social Dinner </a> </div>
   </div>
+  </div>
 
   <!-- Thursday -->
-  <div class="day">
-    <h2>Thursday</h2>
+  <div class="day"> 
+    <h2 onclick="toggleDayContent(this)">Thursday</h2>
+    <div class="day-content">
     <div class="event"><span class="time">09:15</span> - 
 <span class="speaker">Hugues Randriam:</span> <span class="talk">The syzygy distinguisher</span></div>
     <div class="event"><span class="time">10:15</span> - 
@@ -205,11 +237,13 @@ Imperfect Randomness Harms Lattice Signatures</span></div>
 SMS Meeting / Work in Groups</div>
     <div class="event"><span class="time">19:00</span> - 
     🍽️ SMS Dinner</div>
+    </div>
   </div>
 
   <!-- Friday -->
   <div class="day">
-      <h2>Friday</h2>
+      <h2 onclick="toggleDayContent(this)">Friday</h2>
+      <div class="day-content">
       <div class="event"><span class="time">09:15</span> - 
           <span class="speaker">Martin Albrecht:</span> <span class="talk">Hollow LWE: A New Spin, Unbounded Updatable Encryption from LWE and PCE</span></div>
       <div class="event"><span class="time">10:15</span> - 
@@ -237,6 +271,7 @@ SMS Meeting / Work in Groups</div>
             <span class = "speakerct"> Jonathan Conrad: </span> <span class ="talk"> Lattice-based quantum error correction and quantum cryptography</span></div>
       <div class="event"><span class="time">18:00</span> - 
           Closing Speech</div>
+      </div>
   </div>
 
 </body>
