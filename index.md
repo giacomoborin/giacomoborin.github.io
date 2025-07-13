@@ -16,11 +16,18 @@ leverage these mathematical tools to establish innovative functionalities for
 cryptographic schemes, mainly threshold systems, based on quantum-resistant 
 assumptions. 
 
-**Contact**: `crypto at gbor dot in`  
+Here, you can find my:
+- email: `crypto at gbor dot in`;
+- [github](https://github.com/giacomoborin): @giacomoborin;
+- [publications](#pubs);
+- [talks](#talks);
+- [teaching records](#teach);
+- [full CV](/cv/);
+- [portfolio](#portfolio) of some selected projects.
+
 **Discalimer**: _opinions are my own_.
 
-**CV**: [CV](/cv/)
-
+<a id="pubs"></a>
 ## 📝 PUBLICATIONS
 
 <ol>
@@ -47,6 +54,7 @@ assumptions.
   {% endfor %}
 </ol>
 
+<a id="talks"></a>
 ## 🙊 TALKS (selected)
 
 <ul>
@@ -65,6 +73,7 @@ assumptions.
 </ul>
 
 
+<a id="teach"></a>
 ## 📚 TEACHING
 
 <ul>
@@ -79,6 +88,7 @@ assumptions.
   {% endfor %}
 </ul>
 
+<a id="portfolio"></a>
 ## 📍 PORTFOLIO
 
 <ul>
