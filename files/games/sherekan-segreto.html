@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>sherekan-segreto.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="%F0%9F%8C%BF-sherekan-nascosto-%E2%80%93-regole-del-gioco">🌿 <strong>Sherekan Nascosto</strong> – Regole del Gioco</h1>
+<p><em>Il Popolo Libero cerca di proteggere la pace, mentre gli Sciacalli si sono infiltrati e tramano per instaurare il dominio di Sherekan sul consiglio della rupe.</em></p>
+<hr>
+<h2 id="%F0%9F%83%8F-componenti-del-gioco">🃏 Componenti del Gioco</h2>
+<p>Per giocare a <strong>Sherekan Segreto</strong> con un <strong>mazzo di carte francese (52 carte)</strong>, avrai bisogno di:</p>
+<ul>
+<li>1 mazzo completo di carte da gioco francesi</li>
+<li>1 segnalino <strong>Capo del Consiglio</strong></li>
+<li>1 segnalino <strong>Secondo del Consiglio</strong></li>
+<li>10 carte ruolo (da preparare in base al numero di giocatori)</li>
+<li>17 carte <strong>Decreti del Consiglio</strong> (11 decreti Sciacalli ♠️ e 6 decreti del Popolo Libero ♦️)</li>
+<li>Tracciato del Potere e tracciato dei Decreti (da disegnare o scaricare)</li>
+</ul>
+<hr>
+<h2 id="%F0%9F%91%A5-preparazione-del-gioco">👥 Preparazione del Gioco</h2>
+<p>Il numero di partecipanti può variare da <strong>5 a 10 giocatori</strong>.</p>
+<h3 id="%F0%9F%91%A4-ruoli">👤 Ruoli</h3>
+<ul>
+<li><strong>Sherekan</strong> (1 solo): il capo degli Sciacalli.</li>
+<li><strong>Sciacalli</strong>: i suoi alleati segreti.</li>
+<li><strong>Popolo Libero</strong>: il resto dei personaggi della giungla che vogliono preservare la libertà.</li>
+</ul>
+<h3 id="%F0%9F%94%A2-composizione-dei-ruoli">🔢 Composizione dei Ruoli</h3>
+<table>
+<thead>
+<tr>
+<th>Giocatori</th>
+<th>Sciacalli (incluso Sherekan)</th>
+<th>Popolo Libero</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5</td>
+<td>2</td>
+<td>3</td>
+</tr>
+<tr>
+<td>6</td>
+<td>2</td>
+<td>4</td>
+</tr>
+<tr>
+<td>7</td>
+<td>3</td>
+<td>4</td>
+</tr>
+<tr>
+<td>8</td>
+<td>3</td>
+<td>5</td>
+</tr>
+<tr>
+<td>9</td>
+<td>4</td>
+<td>5</td>
+</tr>
+<tr>
+<td>10</td>
+<td>4</td>
+<td>6</td>
+</tr>
+</tbody>
+</table>
+<h3 id="%F0%9F%82%A0-assegnazione-dei-ruoli">🂠 Assegnazione dei Ruoli</h3>
+<p>Assegna a ciascun animale una carta ruolo (puoi usare carte personalizzate o assegnare carte numeriche e creare una legenda, es. J♠ = Sherekan, Q♠ = Sciacallo, cuori e quadri numerati = Popolo Libero).</p>
+<hr>
+<h2 id="%F0%9F%98%B4-fase-notturna-iniziale-solo-prima-del-primo-turno">😴 Fase Notturna Iniziale (Solo prima del primo turno)</h2>
+<p>Il Narratore guida questa fase:</p>
+<ol>
+<li>Tutti chiudono gli occhi.</li>
+<li><strong>Sciacalli (escluso Sherekan)</strong> aprono gli occhi e si riconoscono.</li>
+<li>Il Narratore chiede: “<strong>Sherekan</strong>, fai un piccolo gesto affinché i tuoi Sciacalli possano riconoscerti.”</li>
+<li>Sherekan alza il pollice (a occhi chiusi).</li>
+<li>Gli Sciacalli lo riconoscono e poi chiudono gli occhi.</li>
+<li>Tutti aprono gli occhi.</li>
+</ol>
+<hr>
+<h2 id="%F0%9F%94%84-svolgimento-del-gioco">🔄 Svolgimento del Gioco</h2>
+<p>Il gioco si svolge in turni divisi in <strong>Fasi del Consiglio</strong>. In ogni turno:</p>
+<h3 id="1-%F0%9F%94%81-passaggio-del-segnalino-capo">1. 🔁 Passaggio del Segnalino Capo</h3>
+<p>Il segnalino <strong>Capo del Consiglio</strong> passa al animale successivo in senso orario.</p>
+<h3 id="2-%F0%9F%97%B3%EF%B8%8F-nomina-del-consiglio">2. 🗳️ Nomina del Consiglio</h3>
+<p>Il Capo propone un <strong>Secondo del Consiglio</strong> (chiunque tranne sé stesso).</p>
+<h3 id="3-%E2%9C%94%EF%B8%8F-votazione-del-consiglio">3. ✔️ Votazione del Consiglio</h3>
+<p>Tutti i giocatori votano simultaneamente per approvare la coppia:</p>
+<ul>
+<li>Pollice in su = approvato</li>
+<li>Pollice in giù = respinto</li>
+</ul>
+<p>Se la <strong>maggioranza è favorevole</strong>, la coppia entra in carica per il turno.
+Se è <strong>respinta</strong>, il segnalino Capo passa e si ripete la fase.</p>
+<p>⚠️ Se <strong>3 consigli consecutivi</strong> vengono respinti, si approva automaticamente un decreto casuale dalla cima del mazzo.</p>
+<h3 id="4-%F0%9F%93%9C-elezione-del-decreto">4. 📜 Elezione del Decreto</h3>
+<p>Il Capo pesca <strong>3 carte decreto</strong> (da un mazzo composto da 11 ♠️ e 6 ♦️), ne scarta <strong>1 segretamente</strong> e passa le altre 2 al Secondo, che:</p>
+<ul>
+<li>Scarta <strong>1 carta</strong> e <strong>promulga</strong> l'altra, rivelandola a tutti.</li>
+</ul>
+<h3 id="5-%F0%9F%8F%9B%EF%B8%8F-risoluzione-degli-effetti">5. 🏛️ Risoluzione degli Effetti</h3>
+<ul>
+<li>Se viene promulgato un <strong>decreto Sciacallo (♠️)</strong>, si attiva un effetto (vedi sotto).</li>
+<li>Se viene promulgato un <strong>decreto del Popolo Libero (♦️)</strong>, non succede nulla se non l’avanzamento del tracciato.</li>
+</ul>
+<hr>
+<h2 id="%F0%9F%97%BA%EF%B8%8F-tracciato-dei-decreti">🗺️ Tracciato dei Decreti</h2>
+<p>Segna l’avanzamento dei due schieramenti.</p>
+<ul>
+<li>5 ♠️: dominio Sciacallo (con condizioni particolari)</li>
+<li>6 ♦️: vittoria automatica del Popolo Libero</li>
+</ul>
+<hr>
+<h2 id="%F0%9F%8E%AF-condizioni-di-vittoria">🎯 Condizioni di Vittoria</h2>
+<h3 id="%E2%9C%85-vittoria-del-popolo-libero">✅ Vittoria del Popolo Libero:</h3>
+<ul>
+<li>Vengono promulgati <strong>6 decreti del Popolo Libero (♦️)</strong>.</li>
+<li><strong>Sherekan viene espulso</strong>.</li>
+</ul>
+<h3 id="%E2%9D%8C-vittoria-degli-sciacalli">❌ Vittoria degli Sciacalli:</h3>
+<ul>
+<li>Vengono promulgati <strong>5 decreti Sciacalli (♠️)</strong> <strong>e</strong> Sherekan viene eletto Secondo del Consiglio.</li>
+<li>(Automatico, non serve promulga un decreto).</li>
+</ul>
+<hr>
+<h2 id="%F0%9F%93%8C-note-finali">📌 Note Finali</h2>
+<ul>
+<li>Il Popolo Libero <strong>non si conosce</strong> tra di loro.</li>
+<li>Gli Sciacalli <strong>si riconoscono</strong>, ma devono agire in segreto.</li>
+<li><strong>Sherekan non sa chi siano gli altri Sciacalli</strong> nei giochi da 7 o più.</li>
+</ul>
+<hr>
+<h2 id="%F0%9F%A7%A9-suggerimenti-per-usare-un-mazzo-di-carte-francesi">🧩 Suggerimenti per usare un mazzo di carte francesi</h2>
+<ul>
+<li>
+<p><strong>Assegna i ruoli</strong> usando carte specifiche, ad esempio:</p>
+<ul>
+<li>J♠ = Sherekan</li>
+<li>Q♠, K♠ = Sciacalli</li>
+<li>Cuori e Quadri numerati = Popolo Libero</li>
+</ul>
+</li>
+<li>
+<p><strong>Decreti</strong>:</p>
+<ul>
+<li>♠️ = Decreti Sciacalli</li>
+<li>♦️ = Decreti del Popolo Libero</li>
+</ul>
+</li>
+<li>
+<p>Mischia sempre le carte decreto dopo ogni turno, salvo scarti già noti.</p>
+</li>
+</ul>
+<hr>
+<p>Perfetto! Ecco la <strong>sezione dei poteri speciali</strong> riscritta in modo preciso e coerente con le regole originali di <em>Secret Hitler</em>, ma <strong>ambientata nel Libro della Giungla</strong>, distinguendo <strong>i poteri sbloccati in base al numero di giocatori</strong> e mantenendo intatta la dinamica originale (cioè, i poteri si attivano solo dopo la promulgazione di decreti Sciacalli ♠️).</p>
+<hr>
+<h2 id="%F0%9F%A7%A0-poteri-speciali-del-capo-%E2%80%93-dopo-decreti-sciacalli-%E2%99%A0%EF%B8%8F">🧠 Poteri Speciali del Capo – <em>Dopo Decreti Sciacalli ♠️</em></h2>
+<p>Nel corso del gioco, dopo che vengono promulgati <strong>uno o più decreti Sciacalli</strong>, il <strong>Capo del Consiglio</strong> ottiene poteri speciali, che variano <strong>in base al numero dei giocatori</strong>. Questi poteri rappresentano la tensione crescente nella Giungla e il tentativo del Popolo Libero di reagire agli intrighi degli Sciacalli.</p>
+<hr>
+<h3 id="%F0%9F%91%A5-5%E2%80%936-giocatori">👥 <strong>5–6 Giocatori</strong></h3>
+<table>
+<thead>
+<tr>
+<th>Totale Decreti Sciacalli ♠️</th>
+<th>Potere del Capo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3</td>
+<td><strong>Osservazione</strong> 🔍 – Guarda i prossimi 3 decreti.</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Espulsione</strong> 🚫 – Espelli un animale dal consiglio della Rupe.</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Espulsione</strong> 🚫 e diritto di <strong>Veto</strong>.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="%F0%9F%91%A5-7%E2%80%938-giocatori">👥 <strong>7–8 Giocatori</strong></h3>
+<table>
+<thead>
+<tr>
+<th>Totale Decreti Sciacalli ♠️</th>
+<th>Potere del Capo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td><strong>Osservazione</strong> 🔍 – Guarda il ruolo di un animale.</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Scelta Segreta</strong> 🎯 – Nomina il prossimo Capo del Consiglio (vale solo per un turno).</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Espulsione</strong> 🚫 – Espelli un animale dal consiglio della Rupe.</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Espulsione</strong> 🚫 e diritto di <strong>Veto</strong>.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="%F0%9F%91%A5-9%E2%80%9310-giocatori">👥 <strong>9–10 Giocatori</strong></h3>
+<table>
+<thead>
+<tr>
+<th>Totale Decreti Sciacalli ♠️</th>
+<th>Potere del Capo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Osservazione</strong> 🔍 – Guarda il ruolo di un animale.</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Osservazione</strong> 🔍 – Guarda il ruolo di un altro animale.</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Scelta Segreta</strong> 🎯 – Nomina il prossimo Capo del Consiglio.</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Espulsione</strong> 🚫 – Espelli un animale dal consiglio della Rupe.</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Espulsione</strong> 🚫 e diritto di <strong>Veto</strong>.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="%F0%9F%93%9D-dettagli-sui-poteri">📝 Dettagli sui Poteri</h3>
+<ul>
+<li>
+<p><strong>🔍 Osservazione:</strong> Il Capo sceglie un animale e guarda segretamente la sua <strong>carta ruolo</strong> (non l’affiliazione). Può dire agli altri cosa ha visto, ma potrebbe mentire.</p>
+</li>
+<li>
+<p><strong>🎯 Scelta Segreta:</strong> Il Capo sceglie il <strong>prossimo Capo del Consiglio</strong>, ignorando l’ordine normale. Dopo quel turno, il segnalino torna al animale successivo in senso orario come da regola standard.</p>
+</li>
+<li>
+<p><strong>🚫 Espulsione:</strong> Il Capo espelle un animale, che <strong>rivela solo se era Sherekan oppure no</strong>. Non rivela il ruolo completo né se era Sciacallo o Popolo Libero.</p>
+</li>
+<li>
+<p><strong>Diritto di Veto:</strong> Dopo aver passato i 2 decreti il Secondo del Consiglio puo invocare il diritto di veto, se accettato dal Capo del Consiglio allora vengono scartati i decreti (conta come consiglio respinto).</p>
+</li>
+</ul>
+<hr>
+<h3 id="%E2%9A%A0%EF%B8%8F-attenzione">⚠️ Attenzione!</h3>
+<ul>
+<li><strong>Espellere Sherekan</strong> significa <strong>vittoria immediata del Popolo Libero</strong>.</li>
+<li>Se vengono promulgati <strong>5 decreti Sciacalli</strong> e Sherekan viene eletto <strong>Secondo del Consiglio</strong>, <strong>gli Sciacalli vincono immediatamente</strong> (anche senza decreto promulgato).</li>
+</ul>
+
+</body>
+</html>

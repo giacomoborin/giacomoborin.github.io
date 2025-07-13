@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TA for Kryptographie</title>
+<link rel="stylesheet" href="/assets/style.css">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
+
+  </head>
+  <body>
+    <main>
+      <h2 id="kryptographie-2025">Kryptographie, 2025</h2>
+
+<p><strong>Professor</strong>: Prof. Dr. Joachim Rosenthal,<br />
+<em>Teaching Assistants</em>:</p>
+
+<ul>
+  <li>Giacomo Borin</li>
+  <li>Silvia Sconza</li>
+  <li>Abhinaba Mazumder</li>
+</ul>
+
+<p>Here some material for the course.
+A few useful links:</p>
+
+<ul>
+  <li>2025 : Reference <a href="https://www.math.uzh.ch/en/ve-vo-det?key2=5249&amp;keySemId=48&amp;cHash=8b5a905103418358d83858ea182cee92">link</a> of the course.</li>
+  <li>Sagemath is a computer algebra software based on python that can be installed <a href="https://doc.sagemath.org/html/en/installation/index.html">here</a> and the docs are <a href="https://doc.sagemath.org/html/en/constructions/index.html">here</a>.</li>
+  <li>Jupyter Notebook is a popular, open-source web application used for creating and sharing documents that combine live code, text, visualizations, and rich media. You can download it <a href="https://jupyter.org/">here</a>. If you really don’t want to run it locally there are services like <a href="https://mybinder.org/">Binder</a> to run it online.</li>
+</ul>
+
+<h2 id="exercise-session-04">Exercise Session 04</h2>
+
+<p><em>Arguments</em>: factorization and LFSR.
+<em>Script used</em>:</p>
+
+<ul>
+  <li><a href="https://giacomoborin.github.io/files/teaching/cryptography/ex04_solutions.ipynb">notebook</a>, <a href="https://nbviewer.org/github/giacomoborin/giacomoborin.github.io/blob/master/files/teaching/cryptography/ex04_solutions.ipynb">online view</a></li>
+</ul>
+
+<h2 id="exercise-session-07">Exercise Session 07</h2>
+
+<p><em>Arguments</em>: AES key scheduling and Elliptic Curve introduction.
+<em>Scripts used</em>:</p>
+
+<ul>
+  <li><a href="https://giacomoborin.github.io/files/teaching/cryptography/ex07_aes_ecc.ipynb">Sagemath notebook</a> with descriptive AES key scheduling and EC formulas,</li>
+  <li><a href="https://giacomoborin.github.io/files/teaching/cryptography/ex07_aes.ipynb">Python notebook</a> with a more serious AES key scheduling.</li>
+</ul>
+
+<p>Tips:</p>
+
+<ul>
+  <li>see <a href="https://hyperelliptic.org/EFD/">hyperelliptic.org</a> for a database of explicit EC formulas.</li>
+</ul>
+
+<h2 id="lesson-20250417">Lesson 2025.04.17</h2>
+
+<p>Here some gifs showing the use of the LLL algorithm to solve the knapsack problem. There are generated with <a href="https://giacomoborin.github.io/files/teaching/cryptography/lll.py">this</a> script and inspired by <a href="https://www.youtube.com/watch?v=UU2EaVXkKLY">Tanja Lange lesson on LLL</a>.</p>
+
+<p><strong>Example 0</strong>:</p>
+
+<ul>
+  <li><em>weights</em>: $430, 138, 495, 49, 463, 196, 165$;</li>
+  <li><em>target</em>:  $942$;</li>
+  <li><em>solution</em>: $430 + 49 + 463 = 942$</li>
+</ul>
+
+<p><img src="https://giacomoborin.github.io/files/teaching/cryptography/matrix_animation_small.gif" alt="Cryptography Gif" /></p>
+
+<p><strong>Example 1</strong>:</p>
+
+<ul>
+  <li><em>weights</em>: $2381, 1094, 2188, 2442, 2280, 1129, 1803, 2259, 1665$;</li>
+  <li><em>target</em>: $7598$;</li>
+  <li><em>solutions</em>: $1094 + 2442 + 1803 + 2259 = 7598$</li>
+</ul>
+
+<p><img src="https://giacomoborin.github.io/files/teaching/cryptography/matrix_animation_bigger.gif" alt="Cryptography Gif" /></p>
+
+
+    </main>
+  </body>
+</html>

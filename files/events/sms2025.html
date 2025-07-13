@@ -1,0 +1,358 @@
+<!--The math behind the new lattice-based cryptographic standards-->
+<!--The state of the isogeny-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Workshop on the mathematics of post-quantum cryptography </title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 1rem;
+      background: #f5f5f5;
+    }
+    .day {
+      background: white;
+      margin-bottom: 1rem;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .day h2 {
+      margin-top: 0;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 0.5rem;
+    }
+    .event {
+      margin: 0.5rem 0;
+    }
+    .time {
+      font-weight: bold;
+      color: #555;
+    }
+    .speaker {
+      font-weight: bold;
+      color: #E02300;
+    }
+    .speaker::before {
+      content: "";
+    }
+    .speakerct {
+      font-weight: bold;
+      color: #A40;
+    }
+    .speakerct::before {
+    content: "";
+  }
+    .lunch::before {
+      content: "🍽️ Lunch";
+    }
+    .coffee-break::before {
+      content: "☕ Coffee Break ";
+    }
+    .talk {
+      font-style: italic;
+      color: #333;
+    }
+    .day h2 {
+        cursor: pointer;
+        position: relative;
+    }
+
+    .day h2::after {
+        content: "🔽";
+        position: absolute;
+        right: 0;
+        font-size: 0.8em;
+        transition: transform 0.2s;
+    }
+
+    .day.collapsed h2::after {
+        transform: rotate(-90deg);
+    }
+  </style>
+  <script>
+      function toggleDayContent(header) {
+          const dayDiv = header.parentElement;
+          const content = header.nextElementSibling;
+          const isHidden = content.style.display === "none";
+          content.style.display = isHidden ? "block" : "none";
+          dayDiv.classList.toggle("collapsed", !isHidden);
+      }
+  </script>
+</head>
+
+<body>
+    <h1>Workshop on the Mathematics of Post-Quantum Cryptography</h1>
+    <h3>University of Zurich, Irchel Campus - Y15 G19,  Switzerland</h3>
+    <p><strong> Dates: </strong> June 2-6 2025</p>
+    <p> <b> New: </b>
+    slides can be found <a 
+        href="https://drive.switch.ch/index.php/s/rGKnSguJu3WzLO4">here</a> 📚 </p>
+
+
+  <!-- Monday -->
+  <div class="day">
+      <h2 onclick="toggleDayContent(this)">Monday</h2>
+      <div class="day-content">
+      <div class="event"><span class="time">08:30</span> - 
+Registration 
+          Opens</div>
+      <div class="event"><span class="time">09:00</span> - 
+Opening Speech</div>
+      <div class="event"><span class="time">09:15</span> - 
+<span 
+              class="speaker">Antoine Joux:</span> <span class="talk">Some 
+              recent applications of polynomial equations in 
+      Cryptography</span></div>
+    <div class="event"><span class="time">10:15</span> - 
+  <span class = "speakerct"> 
+    Sebastian Bitzer: </span> <span class ="talk"> Beyond Standard: Optimizations and Refined Analysis of HQC</span></div>
+    <div class="event"><span class="time">10:40</span> - 
+<span class = "coffee-break"></span></div>
+    <div class="event"><span class="time">11:20</span> - 
+<span 
+    class="speaker">Vadim Lyubashevsky:</span> <span 
+    class="talk">The math behind the new lattice-based cryptographic standards</span></div>
+    <div class="event"><span class="time">12:20</span> - 
+  <span class = "speakerct"> Ludo 
+    Pulles: </span> <span class ="talk"> Towards a Modern LLL Implementation</span></div>
+    <div class="event"><span class="time">12:45</span> - 
+<span class = "lunch"></span> </div>
+    <div class="event"><span class="time">14:30</span> - 
+<span 
+    class="speaker">Jean-Christophe Deneuville:</span> <span 
+    class="talk">
+    Beyond HQC standardization: hardware/software optimization, side-channel analysis and advanced primitives
+    </span></div>
+    <div class="event"><span class="time">15:30</span> - 
+  <span class = "speakerct"> Cong 
+    Ling: </span> <span class ="talk"> The Rényi Smoothing Parameter of a Lattice</span></div>
+    <div class="event"><span class="time">15:55</span> - 
+<span class = "coffee-break"></span></div>
+    <div class="event"><span class="time">16:35</span> - 
+<span 
+    class="speaker">Thomas Prest:</span> <span class="talk">Secret Sharing 
+    Schemes for Lattice-Based Threshold Cryptography</span></div>
+    <div class="event"><span class="time">17:35</span> - 
+Apero</div>
+      </div>
+  </div>
+
+  <!-- Tuesday -->
+  <div class="day">
+    <h2 onclick="toggleDayContent(this)">Tuesday</h2>
+    <div class="day-content">
+    <div class="event"><span class="time">09:15</span> - 
+<span class="speaker">Simona Samardjiska:</span> <span class="talk">On equivalence problems, minimal keys and digital signatures</span></div>
+    <div class="event"><span class="time">10:15</span> - 
+  <span class = "speakerct"> Michael Schaller: </span> <span class ="talk"> Lattices over non-archimedean Fields and their applications to the BIKE cryptosystem</span></div>
+    <div class="event"><span class="time">10:40</span> - 
+<span class = "coffee-break"></span></div>
+    <div class="event"><span class="time">11:20</span> - 
+<span class="speaker">Paolo Santini:</span> <span class="talk">Hull(k) smash! - 
+Hull Attacks on the Code Equivalence Problem</span></div>
+    <div class="event"><span class="time">12:20</span> - 
+  <span class = "speakerct"> Rahmi El Mechri: </span> <span class ="talk"> SPECK: Signature from Permutation Equivalence of Codes and Kernel</span></div>
+    <div class="event"><span class="time">12:45</span> - 
+<span class = "lunch"></span> </div>
+    <div class="event"><span class="time">14:30</span> - 
+<span class="speaker">Alain Couvreur:</span> <span class="talk">Algorithms for solving matrix code equivalence problems</span></div>
+    <div class="event"><span class="time">15:30</span> - 
+  <span class = "speakerct"> Ziyi Guan: </span> <span class ="talk"> Qunatum Rewinding for IOP-Based Succint Arguments</span></div>
+    <div class="event"><span class="time">15:55</span> - 
+<span class = "coffee-break"></span></div>
+    <div class="event"><span class="time">16:35</span> - 
+<span class="speaker">Andre Esser:</span> <span class="talk">Solving Code Equivalence via Codeword Search</span></div>
+    <div class="event"><span class="time">17:35</span> - 
+  <span class = "speakerct"> Alan Szepieniec: </span> <span class ="talk"> Overview of Post-Quantum Cryptography in Neptune Cash</span></div>
+    </div>
+  </div>
+
+  <!-- Wednesday -->
+  <div class="day">
+      <h2 onclick="toggleDayContent(this)">Wednesday</h2>
+      <div class="day-content">
+      <div class="event"><span class="time">09:15</span> - 
+<span 
+              class="speaker">Alessio Caminata:</span> <span 
+              class="talk">Algebraic Attacks in Post-quantum 
+      Cryptography</span></div>
+    <div class="event"><span class="time">10:15</span> - 
+  <span class = "speakerct"> 
+    Andrea Sanguineti: </span> <span class ="talk">  Algebraic modelings of the Supersingular Isogeny Problem</span></div>
+    <div class="event"><span class="time">10:40</span> - 
+<span class = "coffee-break"></span></div>
+    <div class="event"><span class="time">11:20</span> - 
+<span 
+    class="speaker">Morten &Oslash;ygarden:</span> <span class="talk">On Algebraic 
+    Cryptanalysis of Decoding Problem with Structured Error</span></div>
+    <div class="event"><span class="time">12:20</span> - 
+  <span class = "speakerct"> Emily 
+    McMillon: </span> <span class ="talk"> Short Cycles and Decoder Failure in the BIKE Cryptosystem</span></div>
+    <div class="event"><span class="time">12:45</span> - 
+<span class = "lunch"></span> </div>
+    <div class="event"><span class="time">14:30</span> - 
+<span 
+    class="speaker">Alexander May:</span> <span class="talk">One Bit (per Ring) 
+    to Rule Them All - 
+Imperfect Randomness Harms Lattice Signatures</span></div>
+    <div class="event"><span class="time">15:30</span> - 
+  <span class = "speakerct"> 
+    Martin Feussner: </span> <span class ="talk"> Isotropic Quadratic Forms, Diophantine equations and Digital Signatures</span></div>
+    <div class="event"><span class="time">15:55</span> - 
+<span class = "coffee-break"></span></div>
+    <div class="event"><span class="time">16:35</span> - 
+<span 
+    class="speaker">Antonia Wachter-Zeh:</span> <span class="talk">Interleaved 
+    (Hamming-Metric and Rank-Metric) Codes for Cryptography</span></div>
+    <div class="event"><span class="time">17:35</span> - 
+<span 
+    class="speaker">Delaram Kahrobaei:</span> <span class="talk">Post-quantum 
+    Hash Functions using SLn(Fq) and PHALYNX Hash-Based Digital Signature Scheme</span></div>
+    <div class="event"><span class="time">19:00</span> - 
+        🍽️ <a href="https://lake-side.ch/en/"> Social Dinner </a> </div>
+  </div>
+  </div>
+
+  <!-- Thursday -->
+  <div class="day"> 
+    <h2 onclick="toggleDayContent(this)">Thursday</h2>
+    <div class="day-content">
+    <div class="event"><span class="time">09:15</span> - 
+<span class="speaker">Hugues Randriam:</span> <span class="talk">The syzygy distinguisher</span></div>
+    <div class="event"><span class="time">10:15</span> - 
+  <span class = "speakerct"> Michele Battagliola: </span> <span class ="talk"> A Revision of CROSS Security: Proofs and Attacks for Multi-Round Fiat-Shamir Signatures</span></div>
+    <div class="event"><span class="time">10:40</span> - 
+<span class = "coffee-break"></span></div>
+    <div class="event"><span class="time">11:20</span> - 
+<span class="speaker">Thibauld Feneuil:</span> <span class="talk">Polynomial Commitment Strategies in Hash-Based Proof Systems for Small Statements</span></div>
+    <div class="event"><span class="time">12:20</span> - 
+  <span class = "speakerct"> Diego Napp: </span> <span class ="talk"> A novel rank metric code-based key cryptosystem (PKC)</span></div>
+    <div class="event"><span class="time">12:45</span> - 
+<span class = "lunch"></span> </div>
+    <div class="event"><span class="time">14:30</span> - 
+<span class="speaker">Kenny Paterson:</span> <span class="talk">The Role of Mathematics in Cryptography</span></div>
+    <div class="event"><span class="time">15:30</span> - 
+SMS Meeting / Work in Groups</div>
+    <div class="event"><span class="time">19:00</span> - 
+    🍽️ SMS Dinner</div>
+    </div>
+  </div>
+
+  <!-- Friday -->
+  <div class="day">
+      <h2 onclick="toggleDayContent(this)">Friday</h2>
+      <div class="day-content">
+          <div class="event"><span class="time">09:15</span> - 
+              <span class="speaker">Martin Albrecht:</span> <span class="talk">Hollow LWE: A New Spin, Unbounded Updatable Encryption from LWE and PCE</span></div>
+          <div class="event"><span class="time">10:15</span> - 
+              <span class = "speakerct"> Silvia Sconza: </span> <span class ="talk"> Knot-based Key Exchange Protocol</span></div>
+          <div class="event"><span class="time">10:40</span> - 
+              <span class = "coffee-break"></span></div>
+          <div class="event"><span class="time">11:20</span> - 
+              <span class="speaker">Emmanuela Orsini:</span> <span class="talk">ZK from Symmetric Primitives and Beyond</span></div>
+          <div class="event"><span class="time">12:20</span> - 
+              <span class = "speakerct"> Ryan Rueger: </span> <span class ="talk"> On Cryptographic Group Actions from Isogenies</span></div>
+          <div class="event"><span class="time">12:45</span> - 
+              <span class = "lunch"></span> </div>
+          <div class="event"><span class="time">14:30</span> - 
+              <span class="speaker">Lorenz Panny:</span> <span class="talk">The state of the isogeny</span></div>
+          <div class="event"><span class="time">15:30</span> - 
+              <span class = "speakerct"> Knud Ahrens: </span> 
+              <span class ="talk">SIGNITC: Supersingular Isogeny Graph 
+                  Non-Interactive Timed Commitments</span>
+          </div>
+          <div class="event"><span class="time">15:55</span> - 
+              <span class = "coffee-break"></span></div>
+          <div class="event"><span class="time">16:35</span> - 
+              <span class="speaker">Edoardo Persichetti:</span> <span class="talk">On Cryptographic Constructions from the Code Equivalence Problem</span></div>
+          <div class="event"><span class="time">17:35</span> - 
+              <span class = "speakerct"> Jonathan Conrad: </span> <span class ="talk"> Lattice-based quantum error correction and quantum cryptography</span></div>
+          <div class="event"><span class="time">18:00</span> - 
+              Closing Speech</div>
+      </div>
+  </div>
+
+  <div class="day">
+      <h2 onclick="toggleDayContent(this)">More info</h2>
+      <div class="day-content">
+          <div class="event">
+              <p> Here are some recommendations for food places in Zurich:</p>
+
+              <h4> 🌱 Vegan/Vegetarian</h4>
+              <ul>
+                  <li>Hiltl (oldest vegetarian restaurant in the world, with multiple locations)</li>
+                  <li>Tibits (also part of Hiltl)</li>
+                  <li>Kle (expensive)</li>
+                  <li>Dar (expensive)</li>
+                  <li>Zur Goldige Guttere (expensive)</li>
+              </ul>
+
+                <h4> 🇮 Italian</h4>
+                <ul>
+                    <li>Lupo</li>
+                    <li>Brera</li>
+                    <li>So Pizza</li>
+                    <li>Luigia</li>
+                    <li>Vito</li>
+                    <li>Con Gusto</li>
+                    <li>Napule</li>
+                </ul>
+
+                <h4> 🥟 Asian</h4>
+                <ul>
+                    <li>Ooki (Japanese)</li>
+                    <li>IKOO (Japanese)</li>
+                    <li>Miki (Japanese)</li>
+                    <li>Mori Ramen (Japanese)</li>
+                    <li>Miss Miu (Vietnamese)</li>
+                    <li>Cochinchin (Vietnamese)</li>
+                </ul>
+
+                <h4> 🇪 Ethiopian</h4>
+                <ul>
+                    <li>Mesob</li>
+                </ul>
+
+                <h4> 🌮 Mexican</h4>
+                <ul>
+                    <li>La Taqueria</li>
+                    <li>El Luchador</li>
+                </ul>
+
+              <h4> 🍨 Ice Cream</h4>
+              <p>Gelateria di Berna has amazing ice cream.</p>
+
+              <h4> 🍷 Bars</h4>
+              <ul>
+                  <li>Rimini</li>
+                  <li>El Lokal</li>
+                  <li>Frau Gerolds Garten</li>
+                  <li>Zum Frischen Max</li>
+                  <li>Mata Hari</li>
+                  <li>Les Halles</li>
+                  <li>Stazione Paradiso</li>
+                  <li>The Alehouse</li>
+                  <li>Cabaret Voltaire (birthplace of Dadaism)</li>
+                  <li>BQM (student bar at ETH with a nice view of Zurich)</li>
+              </ul>
+
+              <p>The Langstrasse, Escherwyssplatz, or Niederdorf areas are great for bars.</p>
+
+              <h4>Sightseeing in Zurich</h4>
+              <ul>
+                  <li>Viadukt</li>
+                  <li>Niederdorf</li>
+                  <li>Schipfe</li>
+              </ul>
+
+
+      </div>
+
+
+</body>
+</html>

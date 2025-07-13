@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Erebor and Durian: Full Anonymous Ring Signatures from Quaternions and Isogenies</title>
+<link rel="stylesheet" href="/assets/style.css">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
+
+  </head>
+  <body>
+    <main>
+      <h1 id="erebor-and-durian">Erebor and Durian</h1>
+
+<p>This project is a joint work with Yi-Fu Lai and Antonin Leroux.
+The preprint can be found <a href="https://eprint. iacr. org/2024/1185. pdf">here</a>.
+Proof of Concept implementation at <a href="https://github.com/giacomoborin/RingSQISign-poc">giacomoborin/RingSQISign-poc</a>.</p>
+
+<p>In this work we address the problem of instantiating efficient ring signatures from isogenies that provides both full anonymity and sufficient post-quantum security constructing two efficient post-quantum ring signatures with anonymity against full key exposure, addressing the limitations of existing isogeny-based ring signatures.</p>
+
+<p>We remark that turning SQIsign into an efficient full anonymous ring signature requires some new ideas. In fact, in the first part of the paper, we present an efficient concrete distinguisher for the SQIsign simulator when the signing key is provided using one transcript.</p>
+
+<h3 id="erebor">Erebor</h3>
+
+<p>As a linear ring signature we propose a variant of SQIsign (Asiacrypt’20) that is resistant to the distinguisher attack with only a $\times 1.4$ increase in size and we render it to a ring signature, that we refer as <strong>Erebor</strong>.
+This variant introduces a new zero-knowledge assumption that ensures full anonymity.
+The efficiency of Erebor remains comparable to that of SQIsign, with only a proportional increase due to the ring size. This results in a signature size of 0.71 $KB$ for 4 users and 1.41 $KB$ for 8 users, making it the most compact post-quantum ring signature for up to 29 users.</p>
+
+<h3 id="durian">Durian</h3>
+
+<p>To get instead a logarithmic ring signature we revisit the GPS signature scheme (Asiacrypt’17), developing efficient subroutines to make the scheme more efficient and significantly reduce the resulting signature size. By integrating our scheme with the paradigm by  Beullens, Katsumata, and Pintore
+(Asiacrypt’20), we achieve an efficient logarithmic ring signature, that we call <strong>Durian</strong>, resulting in a signature size of 9.87 $KB$ for a ring of size 1024.</p>
+
+<p align="center">
+<img width="368" alt="image" src="../images/erebor.jpg" />
+<img width="368" alt="image" src="../images/durian.png" />
+</p>
+
+    </main>
+  </body>
+</html>

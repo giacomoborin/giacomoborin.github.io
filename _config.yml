@@ -1,0 +1,76 @@
+# Welcome to Jekyll!
+# 
+#
+# This config file is meant for settings that affect your entire site, values
+# which you are expected to set up once and rarely need to edit after that.
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# `jekyll serve -l -H localhost`. If you change this file, please restart the 
+# server process.
+
+
+
+# Basic Site Settings
+locale                   : "en-US"
+title                    : "Giacomo Borin"
+title_separator          : "-"
+name                     : &name "Giacomo Borin"
+description              : &description "Personal page of Giacomo Borin"
+url                      : https://giacomoborin.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+markdown                 : kramdown
+permalink                : pretty
+
+# Site Author
+author:
+  name             : "Giacomo Borin"
+  avatar           : "profile.jpg"
+  bio              : "PhD student ad UZH & IBM Zurich in the Foundations of Cryptography group. I like trains and mountains 🚞"
+  location         : "Switzerland"
+  employer         :
+  pubmed           :
+  googlescholar    : "https://scholar.google.com/citations?user=nuCtgRYAAAAJ&hl=en"
+  email            :
+  researchgate     :  # example: "https://www.researchgate.net/profile/yourprofile"
+  uri              :
+  bitbucket        :
+  codepen          :
+  dribbble         :
+  flickr           :
+  facebook         :
+  foursquare       :
+  github           : "giacomoborin"
+  google_plus      :
+  keybase          :
+  instagram        :
+  impactstory      : #"https://profiles.impactstory.org/u/xxxx-xxxx-xxxx-xxxx"
+  lastfm           :
+  linkedin         : "giacomo-borin-crypto/"
+  orcid            : "https://orcid.org/0009-0001-7311-3802"
+  pinterest        :
+  soundcloud       :
+  stackoverflow    : # http://stackoverflow.com/users/123456/username
+  steam            :
+  tumblr           :
+  twitter          : "giaborin"
+  vine             :
+  weibo            :
+  xing             :
+  youtube          :
+  wikipedia        :
+
+collections:
+  publications:
+    output: true
+    permalink: /publication/:title
+  talks:
+    output: true
+    permalink: /talk/:title
+  posts:
+    output: true
+    permalink: /post/:title
+  portfolio:
+    output: true
+    permalink: /portfolio/:title
+  teaching:
+    output: true
+    permalink: /teaching/:title
+

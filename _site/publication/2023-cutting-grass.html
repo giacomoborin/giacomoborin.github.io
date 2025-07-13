@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cutting the GRASS: Threshold GRoup Action Signature Schemes</title>
+<link rel="stylesheet" href="/assets/style.css">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
+
+  </head>
+  <body>
+    <main>
+      <p>The paper is a joint work with Michele Battagliola, Alessio Meneghetti and Edoardo Persichetti; it can be <a href="https://eprint.iacr.org/2023/859">downloaded here</a> and it has been published and presented at <a href="https://www.rsaconference.com/library/presentation/usa/2024/threshold%20signatures%20and%20fault%20attacks"><em>CT-RSA 2024</em></a>. We proceed here with a brief summary of the main points.</p>
+
+<h2 id="threshold-signatures">Threshold Signatures</h2>
+
+<p>A $T,N$-threshold digital signature scheme is a protocol designed to distribute the right to sign messages to any subset of at least $T$ out of $N$ key owners. Then, any subset of malicious users of size up to the threshold $T$ won’t be able to forge a valid signature alone.</p>
+
+<p align="center">
+<img width="708" alt="image" src="https://github.com/giacomoborin/giacomoborin.github.io/assets/64214430/91092969-66e2-4876-a2ad-3f82d155e9c0" />
+</p>
+
+<p>Recently the design and the standardization of Multi-Party Threshold Schemes
+received much more interest, even from <a href="https:// nvlpubs.nist.gov/nistpubs/ir/2020/NIST.IR.8214A.pdf">NIST</a>, since the can be used, for example, to enable a more <em>fine-grained control</em> of secret assets, to perform <em>Secure Multi-Party Computation</em> and to improve <em>Distributed Ledger Technologies</em>.</p>
+
+<h2 id="group-actions">Group Actions</h2>
+
+<p>For any group action $\star : G \times X \to X$ we can always define a digital signature via a non interactive proof of knowledge of a secret <em>linking</em> group element $g$ such that $g \star x = y$, where $x,y$ is our public key. The simple idea can be summarized by the diagram</p>
+<p align="center">
+<img width="316" alt="image" src="https://github.com/giacomoborin/giacomoborin.github.io/assets/64214430/3d642681-1b84-434f-a6dd-2372f06b2b35" />
+</p>
+<p>The core idea of the $\Sigma$ protocol is that the verifier produces a new ephemeral set element $\tilde{x} = \tilde{g}\star x$, then showing <em>or</em> the full black arrow ($\tilde{g}$) <em>or</em> the gray dashed one ($\tilde{g}g^{-1}$), but <em>never</em> both of them together.</p>
+
+<p>When considering the exponentiation on a cyclic group we get the core idea behind the Schnorr signature, however, luckily for post-quantum cryptography, several new group actions are emerging from which we can also define digital signatures, for example from isogenies of ellyptic curves or equivalence of linear codes or tensors. More on the design of these signatures can be read <a href="https://giacomoborin.github.io/publication/2024-03-09-grass">here</a>.</p>
+
+<h3 id="mpc-of-a-group-action">MPC of a Group Action</h3>
+<p>It is clear that multiple parties having access to additive shares $x_1,x_2,…,x_N$ of $x = \sum x_i$ can compute the exponentiation $g^x$ by multiplying the exponentiation of their shares $g^{x_1} \cdot g^{x_2} \cdots g^{x_N} = g^{\sum x_i}$. This idea can be adapted to use also any kind of LSSS. 
+It is folklore that using multiplicative shares $ g = g_1 \cdot g_2 \cdots g_N$ we can do the same with any group actions:</p>
+
+\[x \xrightarrow{g_1 \ \star} {x}_1 \xrightarrow{g_2 \ \star} \ldots \xrightarrow{ g_N \ \star } {x}_N = y \ ,\]
+
+<p>note that the computations are sequential and if $G$ is <strong>non-commutative</strong> the order matters. This procedure can be employed, for example, to obtain a <strong>Distributed Key Generation</strong> for $\star$ between $N$ users.</p>
+
+<h1 id="contributions">Contributions</h1>
+<p>In this work, we show that isomorphism problems which stem from cryptographic group actions, can be viable building blocks for threshold signature schemes. In particular, we construct a full $N$-out-of-$N$ threshold signature scheme, and discuss the efficiency issues arising from extending it to the generic $T$-out-of-$N$ case.</p>
+
+<p>For <em>abelian</em> group actions (i.e. CSIFiSh and SCALLOP as of today) the community already explored several combinations of techniques to obtain secure <a href="https://doi.org/10.1007/978-3-030-81293-5_14">distributed key</a> and <a href="https://doi.org/10.1007/978-3-030-44223-1_10">signature</a> <a href="https://doi.org/10.1007/978-3-030-45388-6_7">generation</a>, however the protocols employed usually strongly rely in the commutativity of the group or make the resulting primitive mostly unpractical because of eccessive use of NIZKPs.</p>
+
+<h2 id="the-non-abelian-case">The Non-Abelian Case</h2>
+<p>In the paper we showed how the core ideas of multiparty computation can still be used to define a threshold scheme, in fact the triangular diagram from before can still be computed by multiple users in a recursive flavour:</p>
+<p align="center">
+<img width="615" alt="image" src="https://github.com/giacomoborin/giacomoborin.github.io/assets/64214430/c9dc3255-92b3-4191-8097-142e5e968557" />
+</p>
+
+<p>This natural and naive $N$-out-of-$N$ scheme can be rendered to an $T$-out of-$N$ threshold protocol by using <em>Replicated Secret Sharing</em>. This create a clear trade off between the simplicity of the construction and an exponential increase of communication cost between the parties. However, since the most important use cases like $(2,3)$ or $(3,5)$ have small $T,N$, we still get efficient threshold signatures.</p>
+
+<h2 id="security-of-the-scheme">Security of the Scheme</h2>
+<p>With respect to this we showed that a secure <strong>Distributed Key Generation</strong> can be achieved by adapting known <em>ad-hoc</em> crafted ZKPs, but this requires to send two parallel pairs of elements:
+\(x_1 \xrightarrow{g \ \star} {y}_1 \text{ and } x_2 \xrightarrow{g \ \star} {y}_2 \ ;\)
+so we require as additional security assumption that this additional pair does not help the recover of the secret $g$.</p>
+
+<p><em>Remark</em>: recently it has been showed that for some particular instances of hamming code equivalence for specific choice of parameters this addidiotional pair can be used to recover the secret monomial map, however in the appendix we proposed a possible workaround, even if this new technique need further inspections.</p>
+
+<p>With respect to the <strong>Signature Generation</strong> by using some additional rounds and secure randomness (also called <code class="language-plaintext highlighter-rouge">salt</code>) we can achieve security against malicious users without intensive ZKPs, differently from previous research directions. 
+Also, as an interesting corollary, this additional randomness can be used to prove the security in the QROM model.</p>
+
+<h2 id="instantiations">Instantiations</h2>
+<p>To give a practical outlook on our constructions, we instantiate them with the LESS and MEDS frameworks, which are two flavors of code-based cryptographic group actions. Also we showed that almost all the optimizations already proposed for the signatures can be adapted also to the multiparty case, gaining usable and efficient schemes. As a proof of concept we report here the results in $\mathsf{KiB}$ and $\mathsf{MiB}$ for the thresholdization of MEDS (parameters from <a href="https://www.meds-pqc.org/spec/MEDS-2023-07-26.pdf">version 1.1</a>):</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Case</th>
+      <th>Variant</th>
+      <th>$t$</th>
+      <th>$\omega$</th>
+      <th>$r$</th>
+      <th>$\mathsf{pk}$ size</th>
+      <th>$\mathsf{sig}$ size</th>
+      <th>Exc. cost</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>MEDS-13220</td>
+      <td>Fixed+Multibit</td>
+      <td>192</td>
+      <td>20</td>
+      <td>5</td>
+      <td>13.2</td>
+      <td>13.0</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>(2,3)</td>
+      <td>Fixed+Multibit</td>
+      <td>291</td>
+      <td>19</td>
+      <td>4</td>
+      <td>11.26</td>
+      <td>14.49</td>
+      <td>3.24</td>
+    </tr>
+    <tr>
+      <td>(3,5)</td>
+      <td>Fixed+Multibit</td>
+      <td>113</td>
+      <td>22</td>
+      <td>6</td>
+      <td>18.76</td>
+      <td>20.80</td>
+      <td>4.34</td>
+    </tr>
+    <tr>
+      <td>$(\circ,\circ)$</td>
+      <td>Multibit</td>
+      <td>-</td>
+      <td>-</td>
+      <td>8</td>
+      <td>26.24</td>
+      <td>24.74</td>
+      <td>$\binom{N}{T-1} 0.182 $</td>
+    </tr>
+    <tr>
+      <td>Section 8 of MEDS specs</td>
+      <td>Multibit</td>
+      <td>-</td>
+      <td>-</td>
+      <td>3</td>
+      <td>7.50</td>
+      <td>3.37</td>
+      <td>$\binom{N}{T-1} 0.342$</td>
+    </tr>
+  </tbody>
+</table>
+
+
+    </main>
+  </body>
+</html>

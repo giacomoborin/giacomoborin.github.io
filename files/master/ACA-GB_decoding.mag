@@ -1,0 +1,116 @@
+// Creation of the parameters
+//C := [3,1];  
+C := [3,5,7]; 
+r := #C; q := 2; n := 15; 
+// m is the order of q in Z_n
+m := 1; qq := q; while qq ne 1 do qq := (qq*q) mod n; m := m+1; end while;
+
+// Creation of the generator polynomial
+F<g>:=GF(q,m);
+xi := RootOfUnity(n,F);
+gen := &*{MinimalPolynomial(xi^i) : i in C};
+
+// Creation of the code
+Code := QuasiCyclicCode(n, [gen]);
+Code;
+t := (MinimumDistance(Code) - 1) div 2;
+
+
+// Creation of the polynomial ring with reverse lexicographical order
+S<[x]>:= PolynomialRing(GF(q),r+t,"weight",
+	&cat[Reverse(Eltseq(row)) : row in Rows(IdentityMatrix(Integers(),r+t))]);
+U := [1..r];
+L := [r+1..r+t];
+"\nx variables are",U;
+"z variables are",L;
+
+
+// Creation of the polynomials for the CHRT-syndrome variety
+f := [x[1] : _ in U];
+for u in U do 
+	f[u] := x[u]- &+[x[l]^C[u] : l in L];
+end for;
+"\nf polynomials :=",f;
+chi := [x[1] : _ in U];
+for u in U do
+	chi[u] := x[u]^(q^m) - x[u];
+end for;
+"chi polynomials :=",chi;
+h := [x[1] : _ in L];
+for l in L do
+	h[l-r] := x[l]^(n+1) - x[l];
+end for;
+"h polynomials :=",h;
+SUB := Setseq(Subsets(Seqset(L),2));
+p := [x[1] : _ in [1..#SUB]];
+for ij in [1..#SUB] do
+	i := Setseq(SUB[ij])[1];
+	j := Setseq(SUB[ij])[2];
+	p[ij] := ((x[i]^n - x[j]^n) div (x[i]-x[j]))*x[i]*x[j];
+end for;
+"p polynomials :=",p;
+
+
+"\nStarting evaluation of GROEBNER BASIS for CHRT-syndrome variety";
+SetVerbose("Groebner",1); 
+GB := GroebnerBasis(f cat chi cat h cat p);
+for g in GB do
+	if LeadingMonomial(g) eq x[r+1]^t then
+		LC := g;
+	end if;
+end for;
+
+/*
+LC := x[4]^3 + x[2]*x[3]^8*x[4]^2 + x[1]^9*x[2]^3*x[3]^7*x[4]^2 +
+        x[1]^14*x[3]^7*x[4]^2 + x[1]^13*x[2]^2*x[3]^6*x[4]^2 +
+        x[1]^12*x[2]*x[3]^5*x[4]^2 + x[1]^7*x[2]*x[3]^5*x[4]^2 +
+        x[1]^11*x[2]^3*x[3]^4*x[4]^2 + x[1]^6*x[2]^3*x[3]^4*x[4]^2 +
+        x[1]^11*x[3]^4*x[4]^2 + x[1]^15*x[2]^2*x[3]^3*x[4]^2 +
+        x[1]^10*x[2]^2*x[3]^3*x[4]^2 + x[1]^14*x[2]*x[3]^2*x[4]^2 +
+        x[1]^13*x[2]^3*x[3]*x[4]^2 + x[1]^3*x[2]^3*x[3]*x[4]^2 +
+        x[1]^8*x[3]*x[4]^2 + x[1]^3*x[3]*x[4]^2 + x[1]^12*x[2]^2*x[4]^2 +
+        x[1]^2*x[2]^2*x[4]^2 + x[3]^11*x[4] + x[1]^12*x[2]^3*x[3]^8*x[4] +
+        x[1]^7*x[2]^3*x[3]^8*x[4] + x[1]^2*x[2]^3*x[3]^8*x[4] +
+        x[1]^12*x[3]^8*x[4] + x[1]^11*x[2]^2*x[3]^7*x[4] +
+        x[1]^5*x[2]*x[3]^6*x[4] + x[2]*x[3]^6*x[4] + x[1]^14*x[2]^3*x[3]^5*x[4]
+       + x[1]^9*x[2]^3*x[3]^5*x[4] + x[1]^14*x[3]^5*x[4] + x[1]^9*x[3]^5*x[4] +
+        x[1]^4*x[3]^5*x[4] + x[1]^3*x[2]^2*x[3]^4*x[4] +
+        x[1]^12*x[2]*x[3]^3*x[4] + x[1]^2*x[2]*x[3]^3*x[4] +
+        x[1]^6*x[2]^3*x[3]^2*x[4] + x[1]*x[2]^3*x[3]^2*x[4] + x[1]*x[3]^2*x[4] +
+        x[2]^2*x[3]*x[4] + x[1]^14*x[2]*x[4] + x[1]^9*x[2]*x[4] +
+        x[1]^4*x[2]*x[4] + x[3]^9 + x[1]^14*x[2]^2*x[3]^8 + x[1]^4*x[2]^2*x[3]^8
+        + x[1]^7*x[2]^3*x[3]^6 + x[1]^2*x[2]^3*x[3]^6 + x[1]^12*x[3]^6 +
+        x[1]^7*x[3]^6 + x[1]^2*x[3]^6 + x[1]^6*x[2]^2*x[3]^5 +
+        x[1]*x[2]^2*x[3]^5 + x[1]^15*x[2]*x[3]^4 + x[1]^10*x[2]*x[3]^4 +
+        x[1]^5*x[2]*x[3]^4 + x[2]*x[3]^4 + x[1]^4*x[2]^3*x[3]^3 + x[1]^4*x[3]^3
+        + x[1]^13*x[2]^2*x[3]^2 + x[1]^8*x[2]^2*x[3]^2 + x[1]^12*x[2]*x[3] +
+        x[1]^11;
+
+*/
+
+
+LC;
+
+
+"**************************
+         TEST PHASE
+**************************\n";
+
+c := Random(Code);
+"Codeword sent :",c;
+"Errors generation ...";
+c[3] := c[3]+1; c[7] := c[7]+1; 
+"Received word :",c;
+Synd := [ &+[ c[j+1]*(xi^i)^j : j in [0..n-1]] : i in C];
+"Syndromes     :",Synd;
+
+S_lift := ChangeRing(S, F);
+evLC := S_lift!LC;
+for u in U do
+ evLC := Evaluate(evLC,u,Synd[u]);
+end for;
+
+"Locator polynomial evaluated on syndromes :",evLC;
+
+"Error Locations :",
+[ loc + 1 : loc in [1..n] | Evaluate(evLC, r+1,xi^loc) eq 0];
