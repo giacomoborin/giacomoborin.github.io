@@ -49,9 +49,9 @@ se sei vicino a una delle sfide cliccando il tasto seguente.</p>
 
     <br>
     <h2>Trova le sfide</h2>
-
-    <button onclick="checkLocation()">Check Posizione</button>
-    <p id="output">Waiting for your location...</p>
+    <button onclick="startTracking()">Inizia Tracciamento</button>
+    <button onclick="stopTracking()">Ferma Tracciamento</button>
+    <p id="output">Waiting for GPS updates...</p>
     <p>Tolleranza: 0.0005, circa 50 metri.</p>
 
     <script>
@@ -61,7 +61,7 @@ se sei vicino a una delle sfide cliccando il tasto seguente.</p>
                 <!-- 46.49330352355557, 8.493052092638006 -->
                 lat: 46.493303,
                 lon: 8.493052,
-                challenge: "The first location worked. Vai alla fine della stradina"
+                challenge: "The first location worked."
             },
             {
                 name: "Capanna del Campo",
@@ -82,24 +82,37 @@ se sei vicino a una delle sfide cliccando il tasto seguente.</p>
 
 
 
-        function checkLocation() {
+        let watchId = null;
+
+        function startTracking() {
             if (!navigator.geolocation) {
                 document.getElementById("output").innerText = "Geolocation not supported.";
                 return;
             }
 
-            navigator.geolocation.getCurrentPosition(success, error,                 {
-                enablehighaccuracy: true,
-                timeout: 10000,
-                maximumage: 0
-            }
+            watchId = navigator.geolocation.watchPosition(
+                success,
+                error,
+                {
+                    enableHighAccuracy: true,
+                    timeout: 10000,
+                    maximumAge: 0
+                }
             );
+        }
+
+        function stopTracking() {
+            if (watchId !== null) {
+                navigator.geolocation.clearWatch(watchId);
+                watchId = null;
+                document.getElementById("output").innerText = "Tracking stopped.";
+            }
         }
 
         function success(position) {
             const userLat = position.coords.latitude;
             const userLon = position.coords.longitude;
-            const tolerance = 0.00051; //around 50 meters
+            const tolerance = 0.00051;
 
             let found = false;
             let closest = null;
@@ -108,14 +121,12 @@ se sei vicino a una delle sfide cliccando il tasto seguente.</p>
             for (let loc of locations) {
                 const latErr = userLat - loc.lat;
                 const latErrAbs = Math.abs(latErr);
-
                 const lonErr = userLon - loc.lon;
                 const lonErrAbs = Math.abs(lonErr);
-
                 const totalErr = latErrAbs + lonErrAbs;
 
                 if (totalErr < closestErr) {
-                    closest = { ...loc, latErr, lonErr};
+                    closest = { ...loc, latErr, lonErr };
                     closestErr = totalErr;
                 }
 
@@ -123,7 +134,7 @@ se sei vicino a una delle sfide cliccando il tasto seguente.</p>
 
                 if (isNear) {
                     document.getElementById("output").innerText =
-                        `You have reached: ${loc.name}\nChallenge: ${loc.challenge}`;
+                        `You have reached: ${loc.name}\nChallenge: ${loc.challenge}\nTime: ${getCurrentTime()}`;
                     found = true;
                     break;
                 }
@@ -131,25 +142,21 @@ se sei vicino a una delle sfide cliccando il tasto seguente.</p>
 
             if (!found && closest) {
                 document.getElementById("output").innerText =
-                    `You're not at the right location yet.\n
-                    Closest: ${closest.name}\n
-                    Lat err: ${closest.latErr.toFixed(6)},\n
-                    Lon err: ${closest.lonErr.toFixed(6)}\n
-                    Time: ${getCurrentTime()}`;
+                    `You're not at the right location yet.\nClosest: ${closest.name}\nLat err: ${closest.latErr.toFixed(6)}, Lon err: ${closest.lonErr.toFixed(6)}\nTime: ${getCurrentTime()}`;
             }
-}
-
-        function error(err) {
-            document.getElementById("output").innerText = `Error getting location: ${err.message}`;
         }
 
-              function getCurrentTime() {
-        const now = new Date();
-        const hh = String(now.getHours()).padStart(2, '0');
-        const mm = String(now.getMinutes()).padStart(2, '0');
-        const ss = String(now.getSeconds()).padStart(2, '0');
-        return `${hh}:${mm}:${ss}`;
-      }
+        function error(err) {
+            document.getElementById("output").innerText = `Error getting location: ${err.message}\nTime: ${getCurrentTime()}`;
+        }
 
+        function getCurrentTime() {
+            const now = new Date();
+            const hh = String(now.getHours()).padStart(2, '0');
+            const mm = String(now.getMinutes()).padStart(2, '0');
+            const ss = String(now.getSeconds()).padStart(2, '0');
+            return `${hh}:${mm}:${ss}`;
+        }
     </script>
+
 
