@@ -111,7 +111,7 @@ se sei vicino a una delle sfide cliccando il tasto seguente.</p>
                 const totalErr = latErr + lonErr;
 
                 if (totalErr < closestErr) {
-                    closest = { ...loc, latErr, lonErr };
+                    closest = { ...loc, userLat - loc.lat, userLon - loc.lon };
                     closestErr = totalErr;
                 }
 
@@ -129,8 +129,8 @@ se sei vicino a una delle sfide cliccando il tasto seguente.</p>
                 document.getElementById("output").innerText =
                     `You're not at the right location yet.\n
                     Closest: ${closest.name}\n
-                    Lat err: ${closest.latErr.toFixed(6)}, Lon err: 
-                    ${closest.lonErr.toFixed(6)}\n
+                    Lat err: ${closest.latErr.toFixed(6)},\n
+                    Lon err: ${closest.lonErr.toFixed(6)}\n
                     Time: ${getCurrentTime()}`;
             }
 }
