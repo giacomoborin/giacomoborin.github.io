@@ -1,0 +1,20 @@
+<!-- location.html -->
+<!DOCTYPE html>
+<html>
+  <body>
+    <button onclick="getLocation()">Get Location</button>
+    <p id="coords"></p>
+    <script>
+      function getLocation() {
+        navigator.geolocation.getCurrentPosition(function(pos) {
+          const lat = pos.coords.latitude.toFixed(6);
+          const lon = pos.coords.longitude.toFixed(6);
+          document.getElementById("coords").innerText = `Lat: ${lat}, Lon: ${lon}`;
+        }, function(err) {
+          document.getElementById("coords").innerText = `Error: ${err.message}`;
+        });
+      }
+    </script>
+  </body>
+</html>
+
