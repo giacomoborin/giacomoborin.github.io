@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Foxtrail Challenge</title>
+<link rel="stylesheet" href="/assets/style.css">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
+
+  </head>
+  <body>
+    <main>
+      <h1>Foxtrail Challenge</h1>
+<button onclick="checkLocation()">Check for Challenge</button>
+<p id="output">Waiting for your location...</p>
+
+<script>
+  const locations = [
+    {
+      name: "Refettorio Pio",
+      <!-- 47.3667,8.5500 -->
+      lat: 49.493146,
+      lon: 8.493168,
+      challenge: "The first location worked. Vai alla fine della stradina"
+    },
+    {
+      name: "Second Spot",
+      lat: 46.49277465747415,
+      lon: 8.492447217710023,
+      challenge: "Eureka."
+    }
+  ];
+
+  function checkLocation() {
+    if (!navigator.geolocation) {
+      document.getElementById("output").innerText = "Geolocation not supported.";
+      return;
+    }
+
+    navigator.geolocation.getCurrentPosition(success, error);
+  }
+
+  function success(position) {
+    const userLat = position.coords.latitude;
+    const userLon = position.coords.longitude;
+    const tolerance = 0.0005; // adjust for GPS accuracy
+
+    let found = false;
+
+    for (let loc of locations) {
+      const isNear = Math.abs(userLat - loc.lat) < tolerance &&
+                     Math.abs(userLon - loc.lon) < tolerance;
+
+      if (isNear) {
+        document.getElementById("output").innerText =
+          `You have reached: ${loc.name}\nChallenge: ${loc.challenge}`;
+        found = true;
+        break;
+      }
+    }
+
+    if (!found) {
+      document.getElementById("output").innerText =
+        `You're not at the right location yet.\nLat: ${userLat.toFixed(5)}, Lon: ${userLon.toFixed(5)}`;
+    }
+}
+
+  function error(err) {
+    document.getElementById("output").innerText = `Error getting location: ${err.message}`;
+  }
+</script>
+
+
+    </main>
+  </body>
+</html>
