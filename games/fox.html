@@ -29,7 +29,7 @@ se sei vicino a una delle sfide cliccando il tasto seguente.</p>
 
     <button onclick="checkLocation()">Check Posizione</button>
     <p id="output">Waiting for your location...</p>
-    <p>Tolleranza: 0.0005</p>
+    <p>Tolleranza: 0.0007</p>
 
     <script>
         const locations = [
@@ -70,7 +70,7 @@ se sei vicino a una delle sfide cliccando il tasto seguente.</p>
         function success(position) {
             const userLat = position.coords.latitude;
             const userLon = position.coords.longitude;
-            const tolerance = 0.0005; // adjust for GPS accuracy
+            const tolerance = 0.0007; // adjust for GPS accuracy
 
             let found = false;
 
@@ -88,7 +88,8 @@ se sei vicino a una delle sfide cliccando il tasto seguente.</p>
 
             if (!found) {
                 document.getElementById("output").innerText =
-                    `You're not at the right location yet.\nLat: ${userLat.toFixed(5)}, Lon: ${userLon.toFixed(5)}`;
+                    `You're not at the right location yet.\nLat err: 
+                ${Math.abs(userLat - loc.lat)},\nLon err: ${Math.abs(userLon - loc.lon)}`;
             }
         }
 
