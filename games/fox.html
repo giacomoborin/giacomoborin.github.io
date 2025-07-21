@@ -52,7 +52,7 @@ se sei vicino a una delle sfide cliccando il tasto seguente.</p>
     <button onclick="startTracking()">Inizia Tracciamento</button>
     <button onclick="stopTracking()">Ferma Tracciamento</button>
     <p id="output">Waiting for GPS updates...</p>
-    <p>Tolleranza: 0.0005, circa 50 metri.</p>
+    <p>Tolleranza: 0.00025, circa 25 metri.</p>
 
     <script>
         const locations = [
@@ -112,7 +112,7 @@ se sei vicino a una delle sfide cliccando il tasto seguente.</p>
         function success(position) {
             const userLat = position.coords.latitude;
             const userLon = position.coords.longitude;
-            const tolerance = 0.00051;
+            const tolerance = 0.00026;
 
             let found = false;
             let closest = null;
