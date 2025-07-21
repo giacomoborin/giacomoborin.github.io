@@ -15,22 +15,27 @@ se sei vicino a una delle sfide cliccando il tasto seguente.</p>
     <p id="coords"></p>
 
     <script>
-      function getLocation() {
-        navigator.geolocation.getCurrentPosition(
-          function(pos) {
-            const lat = pos.coords.latitude.toFixed(6);
-            const lon = pos.coords.longitude.toFixed(6);
-            const time = getCurrentTime();
+        function getLocation() {
+            navigator.geolocation.getCurrentPosition(
+                function(pos) {
+                    const lat = pos.coords.latitude.toFixed(6);
+                    const lon = pos.coords.longitude.toFixed(6);
+                    const time = getCurrentTime();
 
-            document.getElementById("coords").innerText =
-              `Lat: ${lat}, Lon: ${lon},\nTime: ${time}`;
-          },
-          function(err) {
-            const time = getCurrentTime();
-            document.getElementById("coords").innerText =
-              `Error: ${err.message}, Time: ${time}`;
-          }
-        );
+                    document.getElementById("coords").innerText =
+                        `Lat: ${lat}, Lon: ${lon},\nTime: ${time}`;
+                },
+                function(err) {
+                    const time = getCurrentTime();
+                    document.getElementById("coords").innerText =
+                        `Error: ${err.message}, Time: ${time}`;
+                },
+                {
+                    enablehighaccuracy: true,
+                    timeout: 10000,
+                    maximumage: 0
+                }
+            );
       }
 
       function getCurrentTime() {
@@ -83,19 +88,34 @@ se sei vicino a una delle sfide cliccando il tasto seguente.</p>
                 return;
             }
 
-            navigator.geolocation.getCurrentPosition(success, error);
+            navigator.geolocation.getCurrentPosition(success, error,                 {
+                enablehighaccuracy: true,
+                timeout: 10000,
+                maximumage: 0
+            }
+            );
         }
 
         function success(position) {
             const userLat = position.coords.latitude;
             const userLon = position.coords.longitude;
-            const tolerance = 0.0005; // adjust for GPS accuracy
+            const tolerance = 0.00051;
 
             let found = false;
+            let closest = null;
+            let closestErr = Infinity;
 
             for (let loc of locations) {
-                const isNear = Math.abs(userLat - loc.lat) < tolerance &&
-                    Math.abs(userLon - loc.lon) < tolerance;
+                const latErr = Math.abs(userLat - loc.lat);
+                const lonErr = Math.abs(userLon - loc.lon);
+                const totalErr = latErr + lonErr;
+
+                if (totalErr < closestErr) {
+                    closest = { ...loc, latErr, lonErr };
+                    closestErr = totalErr;
+                }
+
+                const isNear = latErr < tolerance && lonErr < tolerance;
 
                 if (isNear) {
                     document.getElementById("output").innerText =
@@ -105,12 +125,11 @@ se sei vicino a una delle sfide cliccando il tasto seguente.</p>
                 }
             }
 
-            if (!found) {
-                document.getElementById("output").innerText =
-                    `You're not at the right location yet.\nLat err: 
-                ${Math.abs(userLat - loc.lat)},\nLon err: ${Math.abs(userLon - loc.lon)}`;
-            }
-        }
+    if (!found && closest) {
+        document.getElementById("output").innerText =
+            `You're not at the right location yet.\nClosest: ${closest.name}\nLat err: ${closest.latErr.toFixed(6)}, Lon err: ${closest.lonErr.toFixed(6)}`;
+    }
+}
 
         function error(err) {
             document.getElementById("output").innerText = `Error getting location: ${err.message}`;
