@@ -10,65 +10,99 @@
   </head>
   <body>
     <main>
-      <h1>Foxtrail Challenge</h1>
-<button onclick="checkLocation()">Check for Challenge</button>
-<p id="output">Waiting for your location...</p>
+      <h1>Caccia a Bedretto</h1>
 
-<script>
-  const locations = [
-    {
-      name: "Refettorio Pio",
-      <!-- 47.3667,8.5500 -->
-      lat: 49.493146,
-      lon: 8.493168,
-      challenge: "The first location worked. Vai alla fine della stradina"
-    },
-    {
-      name: "Second Spot",
-      lat: 46.49277465747415,
-      lon: 8.492447217710023,
-      challenge: "Eureka."
-    }
-  ];
+<p>Benvenuto alla caccia al tesoro di Bedretto! Segui le istruzioni e trova le 
+sfide.</p>
+<br>
+<p>Puoi usare il tuo smartphone per ottenere la tua posizione GPS e verificare 
+se sei vicino a una delle sfide cliccando il tasto seguente.</p>
 
-  function checkLocation() {
-    if (!navigator.geolocation) {
-      document.getElementById("output").innerText = "Geolocation not supported.";
-      return;
-    }
-
-    navigator.geolocation.getCurrentPosition(success, error);
-  }
-
-  function success(position) {
-    const userLat = position.coords.latitude;
-    const userLon = position.coords.longitude;
-    const tolerance = 0.0015; // adjust for GPS accuracy
-
-    let found = false;
-
-    for (let loc of locations) {
-      const isNear = Math.abs(userLat - loc.lat) < tolerance &&
-                     Math.abs(userLon - loc.lon) < tolerance;
-
-      if (isNear) {
-        document.getElementById("output").innerText =
-          `You have reached: ${loc.name}\nChallenge: ${loc.challenge}`;
-        found = true;
-        break;
+    <button onclick="getLocation()">La tua posizione</button>
+    <p id="coords"></p>
+    <script>
+      function getLocation() {
+        navigator.geolocation.getCurrentPosition(function(pos) {
+          const lat = pos.coords.latitude.toFixed(8);
+          const lon = pos.coords.longitude.toFixed(8);
+          document.getElementById("coords").innerText = `Lat: ${lat}, Lon: ${lon}`;
+        }, function(err) {
+          document.getElementById("coords").innerText = `Error: ${err.message}`;
+        });
       }
-    }
+    </script>
+    <br>
+    <h2>Trova le sfide</h2>
 
-    if (!found) {
-      document.getElementById("output").innerText =
-        `You're not at the right location yet.\nLat: ${userLat.toFixed(5)}, Lon: ${userLon.toFixed(5)}`;
-    }
-}
+    <button onclick="checkLocation()">Check Posizione</button>
+    <p id="output">Waiting for your location...</p>
+    <p>Tolleranza: 0.0010 (circa 111 metri)</p>
 
-  function error(err) {
-    document.getElementById("output").innerText = `Error getting location: ${err.message}`;
-  }
-</script>
+    <script>
+        const locations = [
+            {
+                name: "Refettorio Pio",
+                <!-- 47.3667,8.5500 -->
+                lat: 49.493146,
+                lon: 8.493168,
+                challenge: "The first location worked. Vai alla fine della stradina"
+            },
+            {
+                name: "Capanna del Campo",
+                lat: 46.49277465747415,
+                lon: 8.492447217710023,
+                challenge: "Eureka."
+            }
+        ];
+
+        // Show on the website the list of locations with their coordinates
+        document.write("<h2>Locations:</h2>");
+        document.write("<ul>");
+        locations.forEach(loc => {
+            document.write(`<li>${loc.name}: Lat ${loc.lat.toFixed(6)}, Lon ${loc.lon.toFixed(6)}</li>`);
+        });
+        document.write("</ul>");
+
+
+
+        function checkLocation() {
+            if (!navigator.geolocation) {
+                document.getElementById("output").innerText = "Geolocation not supported.";
+                return;
+            }
+
+            navigator.geolocation.getCurrentPosition(success, error);
+        }
+
+        function success(position) {
+            const userLat = position.coords.latitude;
+            const userLon = position.coords.longitude;
+            const tolerance = 0.0010; // adjust for GPS accuracy
+
+            let found = false;
+
+            for (let loc of locations) {
+                const isNear = Math.abs(userLat - loc.lat) < tolerance &&
+                    Math.abs(userLon - loc.lon) < tolerance;
+
+                if (isNear) {
+                    document.getElementById("output").innerText =
+                        `You have reached: ${loc.name}\nChallenge: ${loc.challenge}`;
+                    found = true;
+                    break;
+                }
+            }
+
+            if (!found) {
+                document.getElementById("output").innerText =
+                    `You're not at the right location yet.\nLat: ${userLat.toFixed(5)}, Lon: ${userLon.toFixed(5)}`;
+            }
+        }
+
+        function error(err) {
+            document.getElementById("output").innerText = `Error getting location: ${err.message}`;
+        }
+    </script>
 
 
     </main>
