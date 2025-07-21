@@ -20,37 +20,56 @@ se sei vicino a una delle sfide cliccando il tasto seguente.</p>
 
     <button onclick="getLocation()">La tua posizione</button>
     <p id="coords"></p>
+
     <script>
       function getLocation() {
-        navigator.geolocation.getCurrentPosition(function(pos) {
-          const lat = pos.coords.latitude.toFixed(8);
-          const lon = pos.coords.longitude.toFixed(8);
-          document.getElementById("coords").innerText = `Lat: ${lat}, Lon: ${lon}`;
-        }, function(err) {
-          document.getElementById("coords").innerText = `Error: ${err.message}`;
-        });
+        navigator.geolocation.getCurrentPosition(
+          function(pos) {
+            const lat = pos.coords.latitude.toFixed(6);
+            const lon = pos.coords.longitude.toFixed(6);
+            const time = getCurrentTime();
+
+            document.getElementById("coords").innerText =
+              `Lat: ${lat}, Lon: ${lon},\nTime: ${time}`;
+          },
+          function(err) {
+            const time = getCurrentTime();
+            document.getElementById("coords").innerText =
+              `Error: ${err.message}, Time: ${time}`;
+          }
+        );
+      }
+
+      function getCurrentTime() {
+        const now = new Date();
+        const hh = String(now.getHours()).padStart(2, '0');
+        const mm = String(now.getMinutes()).padStart(2, '0');
+        const ss = String(now.getSeconds()).padStart(2, '0');
+        return `${hh}:${mm}:${ss}`;
       }
     </script>
+
     <br>
     <h2>Trova le sfide</h2>
 
     <button onclick="checkLocation()">Check Posizione</button>
     <p id="output">Waiting for your location...</p>
-    <p>Tolleranza: 0.0007</p>
+    <p>Tolleranza: 0.0005</p>
 
     <script>
         const locations = [
             {
                 name: "Refettorio Pio",
-                <!-- 47.3667,8.5500 -->
-                lat: 49.493146,
-                lon: 8.493168,
+                <!-- 46.49330352355557, 8.493052092638006 -->
+                lat: 49.493303,
+                lon: 8.493052,
                 challenge: "The first location worked. Vai alla fine della stradina"
             },
             {
                 name: "Capanna del Campo",
-                lat: 46.492774,
-                lon: 8.4924472,
+                lat: 46.492771,
+                lon: 8.492110,
+                // 46.49277133877704, 8.492110366449241
                 challenge: "Eureka."
             }
         ];
@@ -77,7 +96,7 @@ se sei vicino a una delle sfide cliccando il tasto seguente.</p>
         function success(position) {
             const userLat = position.coords.latitude;
             const userLon = position.coords.longitude;
-            const tolerance = 0.0007; // adjust for GPS accuracy
+            const tolerance = 0.0005; // adjust for GPS accuracy
 
             let found = false;
 
