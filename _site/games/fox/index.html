@@ -59,14 +59,14 @@ se sei vicino a una delle sfide cliccando il tasto seguente.</p>
 
     <button onclick="checkLocation()">Check Posizione</button>
     <p id="output">Waiting for your location...</p>
-    <p>Tolleranza: 0.0005</p>
+    <p>Tolleranza: 0.0005, circa 50 metri.</p>
 
     <script>
         const locations = [
             {
                 name: "Refettorio Pio",
                 <!-- 46.49330352355557, 8.493052092638006 -->
-                lat: 49.493303,
+                lat: 46.493303,
                 lon: 8.493052,
                 challenge: "The first location worked. Vai alla fine della stradina"
             },
@@ -106,7 +106,7 @@ se sei vicino a una delle sfide cliccando il tasto seguente.</p>
         function success(position) {
             const userLat = position.coords.latitude;
             const userLon = position.coords.longitude;
-            const tolerance = 0.00051;
+            const tolerance = 0.00051; //around 50 meters
 
             let found = false;
             let closest = null;
