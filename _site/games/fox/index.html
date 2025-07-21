@@ -113,16 +113,20 @@ se sei vicino a una delle sfide cliccando il tasto seguente.</p>
             let closestErr = Infinity;
 
             for (let loc of locations) {
-                const latErr = Math.abs(userLat - loc.lat);
-                const lonErr = Math.abs(userLon - loc.lon);
-                const totalErr = latErr + lonErr;
+                const latErr = userLat - loc.lat;
+                const latErrAbs = Math.abs(latErr);
+
+                const lonErr = userLon - loc.lon;
+                const lonErrAbs = Math.abs(lonErr);
+
+                const totalErr = latErrAbs + lonErrAbs;
 
                 if (totalErr < closestErr) {
-                    closest = { ...loc, userLat - loc.lat, userLon - loc.lon };
+                    closest = { ...loc, latErr, lonErr};
                     closestErr = totalErr;
                 }
 
-                const isNear = latErr < tolerance && lonErr < tolerance;
+                const isNear = latErrAbs < tolerance && lonErrAbs < tolerance;
 
                 if (isNear) {
                     document.getElementById("output").innerText =
