@@ -132,15 +132,28 @@ se sei vicino a una delle sfide cliccando il tasto seguente.</p>
                 }
             }
 
-    if (!found && closest) {
-        document.getElementById("output").innerText =
-            `You're not at the right location yet.\nClosest: ${closest.name}\nLat err: ${closest.latErr.toFixed(6)}, Lon err: ${closest.lonErr.toFixed(6)}`;
-    }
+            if (!found && closest) {
+                document.getElementById("output").innerText =
+                    `You're not at the right location yet.\n
+                    Closest: ${closest.name}\n
+                    Lat err: ${closest.latErr.toFixed(6)}, Lon err: 
+                    ${closest.lonErr.toFixed(6)}\n
+                    Time: ${getCurrentTime()}`;
+            }
 }
 
         function error(err) {
             document.getElementById("output").innerText = `Error getting location: ${err.message}`;
         }
+
+              function getCurrentTime() {
+        const now = new Date();
+        const hh = String(now.getHours()).padStart(2, '0');
+        const mm = String(now.getMinutes()).padStart(2, '0');
+        const ss = String(now.getSeconds()).padStart(2, '0');
+        return `${hh}:${mm}:${ss}`;
+      }
+
     </script>
 
 
