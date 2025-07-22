@@ -5,161 +5,151 @@ title: Caccia a Bedretto
 
 <h1>Caccia a Bedretto</h1>
 
-<p>Benvenuto alla caccia al tesoro di Bedretto! Segui le istruzioni e trova le 
-sfide.</p>
-<!-- <p>Puoi usare il tuo smartphone per ottenere la tua posizione GPS e verificare  -->
-<!-- se sei vicino a una delle sfide cliccando il tasto seguente.</p> -->
+<p>Benvenuto alla Scoperta di Bedretto!
+Segui le istruzioni e completa piú missioni possibili.</p>
 
-    <!-- <button onclick="getLocation()">La tua posizione</button> -->
-    <!-- <p id="coords"></p> -->
-    <!---->
-    <!-- <script> -->
-    <!--     function getLocation() { -->
-    <!--         navigator.geolocation.getCurrentPosition( -->
-    <!--             function(pos) { -->
-    <!--                 const lat = pos.coords.latitude.toFixed(6); -->
-    <!--                 const lon = pos.coords.longitude.toFixed(6); -->
-    <!--                 const time = getCurrentTime(); -->
-    <!---->
-    <!--                 document.getElementById("coords").innerText = -->
-    <!--                     `Lat: ${lat}, Lon: ${lon},\nTime: ${time}`; -->
-    <!--             }, -->
-    <!--             function(err) { -->
-    <!--                 const time = getCurrentTime(); -->
-    <!--                 document.getElementById("coords").innerText = -->
-    <!--                     `Error: ${err.message}, Time: ${time}`; -->
-    <!--             }, -->
-    <!--             { -->
-    <!--                 enablehighaccuracy: true, -->
-    <!--                 timeout: 10000, -->
-    <!--                 maximumage: 0 -->
-    <!--             } -->
-    <!--         ); -->
-    <!--   } -->
-    <!---->
-    <!--   function getCurrentTime() { -->
-    <!--     const now = new Date(); -->
-    <!--     const hh = String(now.getHours()).padStart(2, '0'); -->
-    <!--     const mm = String(now.getMinutes()).padStart(2, '0'); -->
-    <!--     const ss = String(now.getSeconds()).padStart(2, '0'); -->
-    <!--     return `${hh}:${mm}:${ss}`; -->
-    <!--   } -->
-    <!-- </script> -->
+<h2>Tracciamento Posizione 🧭</h2>
+<button onclick="startTracking()">Inizia Tracciamento</button>
+<button onclick="stopTracking()">Ferma Tracciamento</button>
+<p id='coords' style="font-weight: bold;">NO INFO</p>
+<p id="output">In <b>attesa</b> di posizione GPS</p>
+<p>Tolleranza: 0.00025°, <i>circa 20 metri</i>.</p>
 
-    <h2>Trova le sfide</h2>
-    <button onclick="startTracking()">Inizia Tracciamento</button>
-    <button onclick="stopTracking()">Ferma Tracciamento</button>
-    <p id='coords'>NO INFO</p>
-    <p id="output">In attesa di posizione GPS...</p>
-    <p>Tolleranza: 0.00025, circa 25 metri.</p>
+<script>
+    const locations = [
+        {
+            name: "Refettorio Pio",
+            <!-- 46.49330352355557, 8.493052092638006 -->
+            lat: 46.493303,
+            lon:  8.493052,
+            code: "ABCDEFG0"
+        },
+        {
+            name: "Capanna del Campo",
+            lat: 46.492771,
+            lon:  8.492110,
+            // 46.49277133877704, 8.492110366449241
+            code: "12345678"
+        }
+    ];
 
-    <script>
-        const locations = [
-            {
-                name: "Refettorio Pio",
-                <!-- 46.49330352355557, 8.493052092638006 -->
-                lat: 46.493303,
-                lon: 8.493052,
-                challenge: "The first location worked."
-            },
-            {
-                name: "Capanna del Campo",
-                lat: 46.492771,
-                lon: 8.492110,
-                // 46.49277133877704, 8.492110366449241
-                challenge: "Eureka."
-            }
-        ];
-
-        // Show on the website the list of locations with their coordinates
-        document.write("<h2>Locations:</h2>");
-        document.write("<ul>");
-        locations.forEach(loc => {
-            document.write(`<li>${loc.name}: Lat ${loc.lat.toFixed(6)}, Lon ${loc.lon.toFixed(6)}</li>`);
-        });
-        document.write("</ul>");
+    // Show on the website the list of locations with their coordinates
+    document.write("<h2>Luoghi da visitare 📍</h2>");
+    document.write("<ul>");
+    locations.forEach(loc => {
+        document.write(`<li>${loc.name}: Lat ${loc.lat.toFixed(6)}, Lon ${loc.lon.toFixed(6)}</li>`);
+    });
+    document.write("</ul>");
 
 
 
-        let watchId = null;
+    let watchId = null;
 
-        function startTracking() {
-            if (!navigator.geolocation) {
-                document.getElementById("output").innerText = "Geolocation not supported.";
-                return;
-            }
-
-            watchId = navigator.geolocation.watchPosition(
-                success,
-                error,
-                {
-                    enableHighAccuracy: true,
-                    timeout: 10000,
-                    maximumAge: 0
-                }
-            );
+    function startTracking() {
+        if (!navigator.geolocation) {
+            document.getElementById("output").innerText = "Geolocation not supported.";
+            return;
         }
 
-        function stopTracking() {
-            if (watchId !== null) {
-                navigator.geolocation.clearWatch(watchId);
-                watchId = null;
-                document.getElementById("output").innerText = "Tracking stopped.\nShowing last known position.";
+        watchId = navigator.geolocation.watchPosition(
+            success,
+            error,
+            {
+                enableHighAccuracy: true,
+                timeout: 10000,
+                maximumAge: 0
             }
+        );
+    }
+
+    function stopTracking() {
+        if (watchId !== null) {
+            navigator.geolocation.clearWatch(watchId);
+            watchId = null;
+            document.getElementById("output").innerText = "Tracking stopped.\nShowing last known position.";
         }
+    }
 
-        function success(position) {
-            const userLat = position.coords.latitude;
-            const userLon = position.coords.longitude;
-            const tolerance = 0.00026;
-            const time = getCurrentTime();
+    function success(position) {
+        const userLat = position.coords.latitude;
+        const userLon = position.coords.longitude;
+        const tolerance = 0.00026;
+        const time = getCurrentTime();
 
-            document.getElementById("coords").innerText = `Lat: ${userLat.toFixed(6)}, Lon: ${userLon.toFixed(6)},\nTime: ${time}`;
+        document.getElementById("coords").innerText = `Lat: ${userLat.toFixed(6)}, Lon: ${userLon.toFixed(6)},\nTime: ${time}`;
 
 
-            let found = false;
-            let closest = null;
-            let closestErr = Infinity;
+        let found = false;
+        let closest = null;
+        let closestErr = Infinity;
 
-            for (let loc of locations) {
-                const latErr = userLat - loc.lat;
-                const latErrAbs = Math.abs(latErr);
-                const lonErr = userLon - loc.lon;
-                const lonErrAbs = Math.abs(lonErr);
-                const totalErr = latErrAbs + lonErrAbs;
+        for (let loc of locations) {
+            const latErr = userLat - loc.lat;
+            const latErrAbs = Math.abs(latErr);
+            const lonErr = userLon - loc.lon;
+            const lonErrAbs = Math.abs(lonErr);
+            const totalErr = latErrAbs + lonErrAbs;
 
-                if (totalErr < closestErr) {
-                    closest = { ...loc, latErr, lonErr };
-                    closestErr = totalErr;
-                }
-
-                const isNear = latErrAbs < tolerance && lonErrAbs < tolerance;
-
-                if (isNear) {
-                    document.getElementById("output").innerText =
-                        `You have reached: ${loc.name}\nChallenge: ${loc.challenge}\nTime: ${getCurrentTime()}`;
-                    found = true;
-                    break;
-                }
+            if (totalErr < closestErr) {
+                closest = { ...loc, latErr, lonErr };
+                closestErr = totalErr;
             }
 
-            if (!found && closest) {
+            const isNear = latErrAbs < tolerance && lonErrAbs < tolerance;
+
+            if (isNear) {
                 document.getElementById("output").innerText =
-                    `You're not at the right location yet.\nClosest: ${closest.name}\nLat err: ${closest.latErr.toFixed(6)}, Lon err: ${closest.lonErr.toFixed(6)}`;
+                    `You have reached: ${loc.name}\nCodice: <b>${loc.code}</b>\nTime: ${getCurrentTime()}`;
+                found = true;
+                break;
             }
         }
 
-        function error(err) {
-            document.getElementById("output").innerText = `Error getting location: ${err.message}\nTime: ${getCurrentTime()}`;
+        if (!found && closest) {
+            document.getElementById("output").innerText =
+                `You're not at the right location yet.\nClosest: ${closest.name}\nLat err: ${closest.latErr.toFixed(6)}, Lon err: ${closest.lonErr.toFixed(6)}`;
         }
+    }
 
-        function getCurrentTime() {
-            const now = new Date();
-            const hh = String(now.getHours()).padStart(2, '0');
-            const mm = String(now.getMinutes()).padStart(2, '0');
-            const ss = String(now.getSeconds()).padStart(2, '0');
-            return `${hh}:${mm}:${ss}`;
+    function error(err) {
+        document.getElementById("output").innerText = `Error getting location: ${err.message}\nTime: ${getCurrentTime()}`;
+    }
+
+    function getCurrentTime() {
+        const now = new Date();
+        const hh = String(now.getHours()).padStart(2, '0');
+        const mm = String(now.getMinutes()).padStart(2, '0');
+        const ss = String(now.getSeconds()).padStart(2, '0');
+        return `${hh}:${mm}:${ss}`;
+    }
+</script>
+
+
+<h2> Missioni 🏆 </h2>
+
+
+<p>Completa le seguenti missioni per guadagnare punti e scoprire di più su 
+Bedretto!</p>
+
+<script>
+    const missions = [
+        {
+            title: "Una dolce merenda",
+            description: "Porta al campo le tipiche pastefrolle della Val Bedretto."
+        },
+        {
+            title: "Latticini e fermenti",
+            description: "Porta al campo del formaggio tipico della zona."
         }
-    </script>
+    ];
+
+    document.write("<ol>");
+    missions.forEach(mission => {
+        document.write(`<li><b>${mission.title}:</b> ${mission.description}</li>`);
+    });
+    document.write("</ol>");
+
+</script>
+
 
 
