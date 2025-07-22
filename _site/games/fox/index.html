@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Foxtrail Challenge</title>
+<title>Caccia a Bedretto</title>
 <link rel="stylesheet" href="/assets/style.css">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
 
@@ -14,51 +14,50 @@
 
 <p>Benvenuto alla caccia al tesoro di Bedretto! Segui le istruzioni e trova le 
 sfide.</p>
-<br>
-<p>Puoi usare il tuo smartphone per ottenere la tua posizione GPS e verificare 
-se sei vicino a una delle sfide cliccando il tasto seguente.</p>
+<!-- <p>Puoi usare il tuo smartphone per ottenere la tua posizione GPS e verificare  -->
+<!-- se sei vicino a una delle sfide cliccando il tasto seguente.</p> -->
 
-    <button onclick="getLocation()">La tua posizione</button>
-    <p id="coords"></p>
+    <!-- <button onclick="getLocation()">La tua posizione</button> -->
+    <!-- <p id="coords"></p> -->
+    <!---->
+    <!-- <script> -->
+    <!--     function getLocation() { -->
+    <!--         navigator.geolocation.getCurrentPosition( -->
+    <!--             function(pos) { -->
+    <!--                 const lat = pos.coords.latitude.toFixed(6); -->
+    <!--                 const lon = pos.coords.longitude.toFixed(6); -->
+    <!--                 const time = getCurrentTime(); -->
+    <!---->
+    <!--                 document.getElementById("coords").innerText = -->
+    <!--                     `Lat: ${lat}, Lon: ${lon},\nTime: ${time}`; -->
+    <!--             }, -->
+    <!--             function(err) { -->
+    <!--                 const time = getCurrentTime(); -->
+    <!--                 document.getElementById("coords").innerText = -->
+    <!--                     `Error: ${err.message}, Time: ${time}`; -->
+    <!--             }, -->
+    <!--             { -->
+    <!--                 enablehighaccuracy: true, -->
+    <!--                 timeout: 10000, -->
+    <!--                 maximumage: 0 -->
+    <!--             } -->
+    <!--         ); -->
+    <!--   } -->
+    <!---->
+    <!--   function getCurrentTime() { -->
+    <!--     const now = new Date(); -->
+    <!--     const hh = String(now.getHours()).padStart(2, '0'); -->
+    <!--     const mm = String(now.getMinutes()).padStart(2, '0'); -->
+    <!--     const ss = String(now.getSeconds()).padStart(2, '0'); -->
+    <!--     return `${hh}:${mm}:${ss}`; -->
+    <!--   } -->
+    <!-- </script> -->
 
-    <script>
-        function getLocation() {
-            navigator.geolocation.getCurrentPosition(
-                function(pos) {
-                    const lat = pos.coords.latitude.toFixed(6);
-                    const lon = pos.coords.longitude.toFixed(6);
-                    const time = getCurrentTime();
-
-                    document.getElementById("coords").innerText =
-                        `Lat: ${lat}, Lon: ${lon},\nTime: ${time}`;
-                },
-                function(err) {
-                    const time = getCurrentTime();
-                    document.getElementById("coords").innerText =
-                        `Error: ${err.message}, Time: ${time}`;
-                },
-                {
-                    enablehighaccuracy: true,
-                    timeout: 10000,
-                    maximumage: 0
-                }
-            );
-      }
-
-      function getCurrentTime() {
-        const now = new Date();
-        const hh = String(now.getHours()).padStart(2, '0');
-        const mm = String(now.getMinutes()).padStart(2, '0');
-        const ss = String(now.getSeconds()).padStart(2, '0');
-        return `${hh}:${mm}:${ss}`;
-      }
-    </script>
-
-    <br>
     <h2>Trova le sfide</h2>
     <button onclick="startTracking()">Inizia Tracciamento</button>
     <button onclick="stopTracking()">Ferma Tracciamento</button>
-    <p id="output">Waiting for GPS updates...</p>
+    <p id='pos'>NO INFO</p>
+    <p id="output">In attesa di posizione GPS...</p>
     <p>Tolleranza: 0.00025, circa 25 metri.</p>
 
     <script>
@@ -112,7 +111,7 @@ se sei vicino a una delle sfide cliccando il tasto seguente.</p>
             if (watchId !== null) {
                 navigator.geolocation.clearWatch(watchId);
                 watchId = null;
-                document.getElementById("output").innerText = "Tracking stopped.";
+                document.getElementById("output").innerText = "Tracking stopped.\nShowing last known position.";
             }
         }
 
@@ -120,6 +119,10 @@ se sei vicino a una delle sfide cliccando il tasto seguente.</p>
             const userLat = position.coords.latitude;
             const userLon = position.coords.longitude;
             const tolerance = 0.00026;
+            const time = getCurrentTime();
+
+            document.getElementById("coords").innerText = `Lat: ${userLat.toFixed(6)}, Lon: ${userLon.toFixed(6)},\nTime: ${time}`;
+
 
             let found = false;
             let closest = null;
@@ -149,7 +152,7 @@ se sei vicino a una delle sfide cliccando il tasto seguente.</p>
 
             if (!found && closest) {
                 document.getElementById("output").innerText =
-                    `You're not at the right location yet.\nClosest: ${closest.name}\nLat err: ${closest.latErr.toFixed(6)}, Lon err: ${closest.lonErr.toFixed(6)}\nTime: ${getCurrentTime()}`;
+                    `You're not at the right location yet.\nClosest: ${closest.name}\nLat err: ${closest.latErr.toFixed(6)}, Lon err: ${closest.lonErr.toFixed(6)}`;
             }
         }
 
