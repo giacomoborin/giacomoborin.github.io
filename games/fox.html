@@ -30,6 +30,125 @@ Segui le istruzioni e completa piú missioni possibili.</p>
             lon:  8.492110,
             // 46.49277133877704, 8.492110366449241
             code: "12345678"
+        },
+        // Oratorio dei Santi Sebastiano e Rocco, (46.5060361, 8.5116741)
+        // Cappella della Madonna delle Grazie, (46.5065953, 8.5118180)
+        // Hotel Easy B&B, (46.5060892, 8.5108976)
+        // Cappella della Madonna addolorata, (46.5078820, 8.5177359)
+        // Finestra di Bedretto, (46.4969181, 8.4965049)
+        // Trattoria Esterina, (46.5002536, 8.4995938)
+        // Cappella dell’immacolata, (46.5020516, 8.5027548)
+        {
+            name: "Oratorio dei Santi Sebastiano e Rocco",
+            lat: 46.506036,
+            lon: 8.511674,
+            code: "ORATORIO01"
+        },
+        {
+            name: "Cappella della Madonna delle Grazie",
+            lat: 46.506595,
+            lon: 8.511818,
+            code: "MADONNA01"
+        },
+        {
+            name: "Hotel Easy B&B",
+            lat: 46.506089,
+            lon: 8.510898,
+            code: "HOTEL1234"
+        },
+        {
+            name: "Cappella della Madonna addolorata",
+            lat: 46.507882,
+            lon: 8.517736,
+            code: "MADONNA02"
+        },
+        {
+            name: "Finestra di Bedretto",
+            lat: 46.496918,
+            lon: 8.496505,
+            code: "FINESTRA01"
+        },
+        {
+            name: "Trattoria Esterina",
+            lat: 46.500254,
+            lon: 8.499594,
+            code: "TRATTORIA01"
+        },
+        {
+            name: "Cappella dell’immacolata",
+            lat: 46.502052,
+            lon: 8.502755,
+            code: "IMMACOLATA01"
+        },
+        // Evpass Charging station, (46.5104096, 8.5226987)
+        // Cappella di San Giuseppe, (46.5108697, 8.5274630)
+        // Cancello Alvaro, (46.5108252, 8.5286012)
+        // Cappella di Sant’Anna, (46.5117784, 8.5235949)
+        // Cappella di Santa Maria, (46.5117784, 8.5235949)
+        // Parcheggio pubblico Ossasco, (46.5121769, 8.5378217)
+        // Cappella di Santa Maria Assunta, (46.5128882, 8.5400170)
+        // Cantiere, (46.5151106, 8.5462220)
+        // Civico 42, (46.5188836, 8.5609761)
+        // Cappella della madonna dorata, (46.5181517, 8.5603361)
+        {
+            name: "Evpass Charging station",
+            lat: 46.510410,
+            lon: 8.522699,
+            code: "EVPASS01"
+        },
+        {
+            name: "Cappella di San Giuseppe",
+            lat: 46.510870,
+            lon: 8.527463,
+            code: "SANJOSEPH01"
+        },
+        {
+            name: "Cancello Alvaro",
+            lat: 46.510825,
+            lon: 8.528601,
+            code: "ALVARO01"
+        },
+        {
+            name: "Cappella di Sant’Anna",
+            lat: 46.511778,
+            lon: 8.523595,
+            code: "SANTANNA01"
+        },
+        {
+            name: "Cappella di Santa Maria",
+            lat: 46.511778,
+            lon: 8.523595,
+            code: "SANTAMARIA01"
+        },
+        {
+            name: "Parcheggio pubblico Ossasco",
+            lat: 46.512177,
+            lon: 8.537822,
+            code: "OSSASCO01"
+        },
+        {
+            name: "Cappella di Santa Maria Assunta",
+            lat: 46.512888,
+            lon: 8.540017,
+            code: "ASSUNTA01"
+        },
+        {
+            name: "Cantiere",
+            lat: 46.515111,
+            lon: 8.546222,
+            code: "CANTIERE01"
+        },
+        {
+            name: "Civico 42",
+            lat: 46.518884,
+            lon: 8.560976,
+            code: "CIVICO42"
+        },
+        {
+            name: "Cappella della madonna dorata",
+            lat: 46.518152,
+            lon: 8.560336,
+            code: "MADONNADORATA01"
         }
     ];
 
@@ -37,7 +156,8 @@ Segui le istruzioni e completa piú missioni possibili.</p>
     document.write("<h2>Luoghi da visitare 📍</h2>");
     document.write("<ul>");
     locations.forEach(loc => {
-        document.write(`<li>${loc.name}: Lat ${loc.lat.toFixed(6)}, Lon ${loc.lon.toFixed(6)}</li>`);
+        document.write(`<li>Lat ${loc.lat.toFixed(6)}, Lon ${loc.lon.toFixed(6)} 
+            : <b>${loc.name}</b></li>`);
     });
     document.write("</ul>");
 
