@@ -139,13 +139,13 @@ Segui le istruzioni e completa piú missioni possibili.</p>
     ];
 
     // Show on the website the list of locations with their coordinates
-    document.write("<h2>Luoghi da visitare 📍</h2>");
-    document.write("<ul>");
-    locations.forEach(loc => {
-        document.write(`<li>Lat ${loc.lat.toFixed(6)}, Lon ${loc.lon.toFixed(6)} 
-            : <b>${loc.name}</b></li>`);
-    });
-    document.write("</ul>");
+    // document.write("<h2>Luoghi da visitare 📍</h2>");
+    // document.write("<ul>");
+    // locations.forEach(loc => {
+    //     document.write(`<li>Lat ${loc.lat.toFixed(6)}, Lon ${loc.lon.toFixed(6)} 
+    //         : <b>${loc.name}</b></li>`);
+    // });
+    // document.write("</ul>");
 
 
 
@@ -281,14 +281,14 @@ Segui le istruzioni e completa piú missioni possibili.</p>
   locations.forEach(loc => {
   const marker = L.marker([loc.lat, loc.lon], { icon: getEmojiIcon(loc.gruppo) })
     .addTo(map)
-    .bindPopup(`<b>${loc.name}</b><br>${loc.challenge}`);
+    .bindPopup(`<b>${loc.name}</b>`);
 });
 
   L.easyPrint({
   title: 'Stampa la mappa',
-  position: 'topleft',
+  position: 'topright',
   sizeModes: ['Current', 'A4Portrait', 'A4Landscape'],
-  exportOnly: false, // set to true if you only want to download, not print
+  exportOnly: true, // set to true if you only want to download, not print
   filename: 'FoxtrailMap'
 }).addTo(map);
 
@@ -311,37 +311,37 @@ Segui le istruzioni e completa piú missioni possibili.</p>
 
 <!-- <button onclick="exportGPX()">📤 Scarica GPX</button> -->
 
-<script>
-
-function exportGPX() {
-  const gpxHeader = `<?xml version="1.0" encoding="UTF-8"?>
-<gpx version="1.1" creator="Foxtrail" xmlns="http://www.topografix.com/GPX/1/1">`;
-
-  const gpxFooter = `</gpx>`;
-
-  const gpxBody = locations.map(loc => {
-    const emoji = gruppoEmoji[loc.gruppo] || gruppoEmoji.default;
-    return `
-  <wpt lat="${loc.lat}" lon="${loc.lon}">
-    <name>${emoji} ${loc.name}</name>
-    <type>${loc.gruppo}</type>
-    <scale>0.3</scale>
-  </wpt>`;
-  }).join("");
-
-  const gpxContent = `${gpxHeader}\n${gpxBody}\n${gpxFooter}`;
-
-  const blob = new Blob([gpxContent], { type: 'application/gpx+xml' });
-  const url = URL.createObjectURL(blob);
-
-  const link = document.createElement("a");
-  link.href = url;
-  link.download = "foxtrail.gpx";
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-}
-</script>
+<!-- <script> -->
+<!---->
+<!-- function exportGPX() { -->
+<!--   const gpxHeader = `<?xml version="1.0" encoding="UTF-8"?> -->
+<!-- <gpx version="1.1" creator="Foxtrail" xmlns="http://www.topografix.com/GPX/1/1">`; -->
+<!---->
+<!--   const gpxFooter = `</gpx>`; -->
+<!---->
+<!--   const gpxBody = locations.map(loc => { -->
+<!--     const emoji = gruppoEmoji[loc.gruppo] || gruppoEmoji.default; -->
+<!--     return ` -->
+<!--   <wpt lat="${loc.lat}" lon="${loc.lon}"> -->
+<!--     <name>${emoji} ${loc.name}</name> -->
+<!--     <type>${loc.gruppo}</type> -->
+<!--     <scale>0.3</scale> -->
+<!--   </wpt>`; -->
+<!--   }).join(""); -->
+<!---->
+<!--   const gpxContent = `${gpxHeader}\n${gpxBody}\n${gpxFooter}`; -->
+<!---->
+<!--   const blob = new Blob([gpxContent], { type: 'application/gpx+xml' }); -->
+<!--   const url = URL.createObjectURL(blob); -->
+<!---->
+<!--   const link = document.createElement("a"); -->
+<!--   link.href = url; -->
+<!--   link.download = "foxtrail.gpx"; -->
+<!--   document.body.appendChild(link); -->
+<!--   link.click(); -->
+<!--   document.body.removeChild(link); -->
+<!-- } -->
+<!-- </script> -->
 
 <!-- <button onclick="window.print()">🖨️ Stampa la mappa</button> -->
 
