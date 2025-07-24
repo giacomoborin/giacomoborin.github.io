@@ -10,7 +10,14 @@
   </head>
   <body>
     <main>
-      <h1>Caccia a Bedretto</h1>
+      <!-- Leaflet CSS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+
+
+<h1>Caccia a Bedretto</h1>
 
 <p>Benvenuto alla Scoperta di Bedretto!
 Segui le istruzioni e completa piú missioni possibili.</p>
@@ -24,139 +31,118 @@ Segui le istruzioni e completa piú missioni possibili.</p>
 
 <script>
     const locations = [
-        {
-            name: "Refettorio Pio",
-            <!-- 46.49330352355557, 8.493052092638006 -->
-            lat: 46.493303,
-            lon:  8.493052,
-            code: "ABCDEFG0"
-        },
+        // {
+        //     name: "Refettorio Pio",
+        //     <!-- 46.49330352355557, 8.493052092638006 -->
+        //     lat: 46.493303,
+        //     lon:  8.493052,
+        //     code: "ABCDEFG0",
+        //     gruppo: "Campo",
+        // },
         {
             name: "Capanna del Campo",
             lat: 46.492771,
             lon:  8.492110,
             // 46.49277133877704, 8.492110366449241
-            code: "12345678"
+            code: "12345678",
+            gruppo: "Campo",
         },
-        // Oratorio dei Santi Sebastiano e Rocco, (46.5060361, 8.5116741)
-        // Cappella della Madonna delle Grazie, (46.5065953, 8.5118180)
-        // Hotel Easy B&B, (46.5060892, 8.5108976)
+        // Bedretto
         // Cappella della Madonna addolorata, (46.5078820, 8.5177359)
-        // Finestra di Bedretto, (46.4969181, 8.4965049)
-        // Trattoria Esterina, (46.5002536, 8.4995938)
+        // Cappella di Bedretto (46.5069666, 8.5131715)
+        { 
+            name: "Cappella della Madonna addolorata",
+            lat: 46.5078820, 
+            lon: 8.5177359,
+            code: 'XSDASDSF',
+            gruppo: "Bedretto",
+        },
+        {
+            name: "Cappella di Bedretto",
+            lat: 46.5069666,
+            lon: 8.5131715,
+            code: 'ASDFASDF',
+            gruppo: "Bedretto",
+        },
+        // Ronco
+        // Bedretto Lab, (46.4969181, 8.4965049)
         // Cappella dell’immacolata, (46.5020516, 8.5027548)
         {
-            name: "Oratorio dei Santi Sebastiano e Rocco",
-            lat: 46.506036,
-            lon: 8.511674,
-            code: "ORATORIO01"
-        },
-        {
-            name: "Cappella della Madonna delle Grazie",
-            lat: 46.506595,
-            lon: 8.511818,
-            code: "MADONNA01"
-        },
-        {
-            name: "Hotel Easy B&B",
-            lat: 46.506089,
-            lon: 8.510898,
-            code: "HOTEL1234"
-        },
-        {
-            name: "Cappella della Madonna addolorata",
-            lat: 46.507882,
-            lon: 8.517736,
-            code: "MADONNA02"
-        },
-        {
-            name: "Finestra di Bedretto",
-            lat: 46.496918,
-            lon: 8.496505,
-            code: "FINESTRA01"
-        },
-        {
-            name: "Trattoria Esterina",
-            lat: 46.500254,
-            lon: 8.499594,
-            code: "TRATTORIA01"
+            name: "Bedretto Lab",
+            lat: 46.4969181,
+            lon: 8.4965049,
+            code: 'LAB12345',
+            gruppo: "Ronco",
         },
         {
             name: "Cappella dell’immacolata",
-            lat: 46.502052,
-            lon: 8.502755,
-            code: "IMMACOLATA01"
+            lat: 46.5020516,
+            lon: 8.5027548,
+            code: 'INMAC0L4T4',
+            gruppo: "Ronco",
         },
-        // Evpass Charging station, (46.5104096, 8.5226987)
-        // Cappella di San Giuseppe, (46.5108697, 8.5274630)
-        // Cancello Alvaro, (46.5108252, 8.5286012)
-        // Cappella di Sant’Anna, (46.5117784, 8.5235949)
-        // Cappella di Santa Maria, (46.5117784, 8.5235949)
-        // Parcheggio pubblico Ossasco, (46.5121769, 8.5378217)
-        // Cappella di Santa Maria Assunta, (46.5128882, 8.5400170)
+        // Villa
+        // Tunnel valanghe, (46.5108822, 8.5249802)
+        {
+            name: "Tunnel valanghe",
+            lat: 46.5108822,
+            lon: 8.5249802,
+            code: 'TUNNEL123',
+            gruppo: "Villa",
+        },
+        // Ossasco
+        // Punto fine strada in paese, (46.5126153, 8.5404006)
+        {
+            name: "Punto fine strada in paese",
+            lat: 46.5126153,
+            lon: 8.5404006,
+            code: 'O55ASCO0',
+            gruppo: "Ossasco",
+        },
+        // Tre croci
         // Cantiere, (46.5151106, 8.5462220)
-        // Civico 42, (46.5188836, 8.5609761)
-        // Cappella della madonna dorata, (46.5181517, 8.5603361)
-        {
-            name: "Evpass Charging station",
-            lat: 46.510410,
-            lon: 8.522699,
-            code: "EVPASS01"
-        },
-        {
-            name: "Cappella di San Giuseppe",
-            lat: 46.510870,
-            lon: 8.527463,
-            code: "SANJOSEPH01"
-        },
-        {
-            name: "Cancello Alvaro",
-            lat: 46.510825,
-            lon: 8.528601,
-            code: "ALVARO01"
-        },
-        {
-            name: "Cappella di Sant’Anna",
-            lat: 46.511778,
-            lon: 8.523595,
-            code: "SANTANNA01"
-        },
-        {
-            name: "Cappella di Santa Maria",
-            lat: 46.511778,
-            lon: 8.523595,
-            code: "SANTAMARIA01"
-        },
-        {
-            name: "Parcheggio pubblico Ossasco",
-            lat: 46.512177,
-            lon: 8.537822,
-            code: "OSSASCO01"
-        },
-        {
-            name: "Cappella di Santa Maria Assunta",
-            lat: 46.512888,
-            lon: 8.540017,
-            code: "ASSUNTA01"
-        },
         {
             name: "Cantiere",
-            lat: 46.515111,
-            lon: 8.546222,
-            code: "CANTIERE01"
+            lat: 46.5151106,
+            lon: 8.5462220,
+            code: 'CANTIERE1',
+            gruppo: "Tre_croci",
+        },
+        // Fontana
+        // Punto in fondo al paese, (46.5191857, 8.5602707)
+        {
+            name: "Punto in fondo al paese",
+            lat: 46.5191857,
+            lon: 8.5602707,
+            code: 'B4ND13RA21',
+            gruppo: "Fontana",
+        },
+        // Cioss Prato
+        // Alpe, (46.4894863, 8.4794682)
+        {
+            name: "Alpe",
+            lat: 46.4894863,
+            lon: 8.4794682,
+            code: 'C10SSPR4T0',
+            gruppo: "Cioss_Prato",
+        },
+        // All’Acqua
+        // Ponte All’Acqua (46.485519, 8.474469)
+        // Parcheggio sassi, (46.4876054, 8.4762093)
+        {
+            name: "Ponte All’Acqua",
+            lat: 46.485519,
+            lon: 8.474469,
+            code: 'P0NT3ACQUA',
+            gruppo: "All_Acqua",
         },
         {
-            name: "Civico 42",
-            lat: 46.518884,
-            lon: 8.560976,
-            code: "CIVICO42"
+            name: "Parcheggio sassi",
+            lat: 46.4876054,
+            lon: 8.4762093,
+            code: 'SASSI12345',
+            gruppo: "All_Acqua",
         },
-        {
-            name: "Cappella della madonna dorata",
-            lat: 46.518152,
-            lon: 8.560336,
-            code: "MADONNADORATA01"
-        }
     ];
 
     // Show on the website the list of locations with their coordinates
@@ -193,7 +179,7 @@ Segui le istruzioni e completa piú missioni possibili.</p>
         if (watchId !== null) {
             navigator.geolocation.clearWatch(watchId);
             watchId = null;
-            document.getElementById("output").innerText = "Tracking stopped.\nShowing last known position.";
+            document.getElementById("output").innerText = "Tracking fermato.\nSto mostrando l'ultima posizione nota.";
         }
     }
 
@@ -203,7 +189,8 @@ Segui le istruzioni e completa piú missioni possibili.</p>
         const tolerance = 0.00026;
         const time = getCurrentTime();
 
-        document.getElementById("coords").innerText = `Lat: ${userLat.toFixed(6)}, Lon: ${userLon.toFixed(6)},\nTime: ${time}`;
+        document.getElementById("coords").innerText = `Lat: 
+        ${userLat.toFixed(6)}, Lon: ${userLon.toFixed(6)},\nTempo: ${time}`;
 
 
         let found = false;
@@ -226,7 +213,7 @@ Segui le istruzioni e completa piú missioni possibili.</p>
 
             if (isNear) {
                 document.getElementById("output").innerText =
-                    `You have reached: ${loc.name}\nCodice: <b>${loc.code}</b>\nTime: ${getCurrentTime()}`;
+                    `You have reached: ${loc.name}\nCodice: ${loc.code}\nTempo: ${getCurrentTime()}`;
                 found = true;
                 break;
             }
@@ -234,7 +221,7 @@ Segui le istruzioni e completa piú missioni possibili.</p>
 
         if (!found && closest) {
             document.getElementById("output").innerText =
-                `You're not at the right location yet.\nClosest: ${closest.name}\nLat err: ${closest.latErr.toFixed(6)}, Lon err: ${closest.lonErr.toFixed(6)}`;
+                `Non sei nel posto giusto.\nIl piu' vicino e': ${closest.name}\nLat err: ${closest.latErr.toFixed(6)}, Lon err: ${closest.lonErr.toFixed(6)}`;
         }
     }
 
@@ -251,32 +238,164 @@ Segui le istruzioni e completa piú missioni possibili.</p>
     }
 </script>
 
+<script src="https://unpkg.com/leaflet-easyprint/dist/bundle.min.js"></script>
 
-<h2> Missioni 🏆 </h2>
 
+<h2>Mappa delle sfide</h2>
+<div id="map" style="height: 400px; width: 100%; margin-bottom: 1em;"></div>
 
-<p>Completa le seguenti missioni per guadagnare punti e scoprire di più su 
-Bedretto!</p>
 
 <script>
-    const missions = [
-        {
-            title: "Una dolce merenda",
-            description: "Porta al campo le tipiche pastefrolle della Val Bedretto."
-        },
-        {
-            title: "Latticini e fermenti",
-            description: "Porta al campo del formaggio tipico della zona."
-        }
-    ];
+  const map = L.map('map').setView([46.503503, 8.515052], 13); // center on first location
 
-    document.write("<ol>");
-    missions.forEach(mission => {
-        document.write(`<li><b>${mission.title}:</b> ${mission.description}</li>`);
-    });
-    document.write("</ol>");
+  const gruppoEmoji = {
+      Campo: "🟢",
+      Ronco: "🔵",
+      Bedretto: "🟣",
+      Villa: "🟡",
+      Ossasco: "🟠",
+      Tre_croci: "🟤",
+      Fontana: "🟡",
+      Cioss_Prato: "🟤",
+      All_Acqua: "🔴",
+      default: "⚪",
+  };
+
+    function getEmojiIcon(gruppo) {
+      const emoji = gruppoEmoji[gruppo] || gruppoEmoji.default;
+
+      return L.divIcon({
+        className: "emoji-icon",
+        html: `<div style="font-size: 0.4rem;">${emoji}</div>`,
+        iconSize: [1, 1],
+        iconAnchor: [1, 1],
+        popupAnchor: [0, -1]
+      });
+    }
+
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map);
+
+  // Add markers for all locations
+  // locations.forEach(loc => {
+  //   L.marker([loc.lat, loc.lon])
+  //     .addTo(map)
+  //     .bindPopup(`<b>${loc.name}</b><br>${loc.challenge}`);
+  // });
+
+  locations.forEach(loc => {
+  const marker = L.marker([loc.lat, loc.lon], { icon: getEmojiIcon(loc.gruppo) })
+    .addTo(map)
+    .bindPopup(`<b>${loc.name}</b><br>${loc.challenge}`);
+});
+
+  L.easyPrint({
+  title: 'Stampa la mappa',
+  position: 'topleft',
+  sizeModes: ['Current', 'A4Portrait', 'A4Landscape'],
+  exportOnly: false, // set to true if you only want to download, not print
+  filename: 'FoxtrailMap'
+}).addTo(map);
 
 </script>
+
+<style>
+  .emoji-icon {
+    text-align: center;
+    line-height: 1;
+  }
+</style>
+
+<style>
+.leaflet-control-easyPrint-button {
+  font-size: 14px !important;
+}
+</style>
+
+
+
+<!-- <button onclick="exportGPX()">📤 Scarica GPX</button> -->
+
+<script>
+
+function exportGPX() {
+  const gpxHeader = `<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="Foxtrail" xmlns="http://www.topografix.com/GPX/1/1">`;
+
+  const gpxFooter = `</gpx>`;
+
+  const gpxBody = locations.map(loc => {
+    const emoji = gruppoEmoji[loc.gruppo] || gruppoEmoji.default;
+    return `
+  <wpt lat="${loc.lat}" lon="${loc.lon}">
+    <name>${emoji} ${loc.name}</name>
+    <type>${loc.gruppo}</type>
+    <scale>0.3</scale>
+  </wpt>`;
+  }).join("");
+
+  const gpxContent = `${gpxHeader}\n${gpxBody}\n${gpxFooter}`;
+
+  const blob = new Blob([gpxContent], { type: 'application/gpx+xml' });
+  const url = URL.createObjectURL(blob);
+
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = "foxtrail.gpx";
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+</script>
+
+<!-- <button onclick="window.print()">🖨️ Stampa la mappa</button> -->
+
+<!-- <style> -->
+<!-- @media print { -->
+<!--   body * { -->
+<!--     visibility: hidden; -->
+<!--   } -->
+<!--   #map, #map * { -->
+<!--     visibility: visible; -->
+<!--   } -->
+<!--   #map { -->
+<!--     position: absolute; -->
+<!--     top: 0; -->
+<!--     left: 0; -->
+<!--     width: 100%; -->
+<!--     height: 100%; -->
+<!--   } -->
+<!-- } -->
+<!-- </style> -->
+
+
+<!-- <h2> Missioni 🏆 </h2> -->
+<!---->
+<!---->
+<!-- <p>Completa le seguenti missioni per guadagnare punti e scoprire di più su  -->
+<!-- Bedretto!</p> -->
+<!---->
+<!-- <script> -->
+<!--     const missions = [ -->
+<!--         { -->
+<!--             title: "Una dolce merenda", -->
+<!--             description: "Porta al campo le tipiche pastefrolle della Val Bedretto." -->
+<!--         }, -->
+<!--         { -->
+<!--             title: "Latticini e fermenti", -->
+<!--             description: "Porta al campo del formaggio tipico della zona." -->
+<!--         } -->
+<!--     ]; -->
+<!---->
+<!--     document.write("<ol>"); -->
+<!--     missions.forEach(mission => { -->
+<!--         document.write(`<li><b>${mission.title}:</b> ${mission.description}</li>`); -->
+<!--     }); -->
+<!--     document.write("</ol>"); -->
+<!---->
+<!-- </script> -->
 
 
 
