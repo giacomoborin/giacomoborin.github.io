@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <!-- Leaflet JS -->
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
+<script src="https://unpkg.com/leaflet-easyprint/dist/bundle.min.js"></script>
 
 
 <h1>Caccia a Bedretto</h1>
@@ -241,7 +241,6 @@ Segui le istruzioni e completa piú missioni possibili.</p>
     }
 </script>
 
-<script src="https://unpkg.com/leaflet-easyprint/dist/bundle.min.js"></script>
 
 
 <h2>Mappa delle sfide</h2>
@@ -296,10 +295,10 @@ Segui le istruzioni e completa piú missioni possibili.</p>
 
   L.easyPrint({
   title: 'Stampa la mappa',
-  position: 'topright',
-  sizeModes: ['Current', 'A4Portrait', 'A4Landscape'],
-  exportOnly: true, // set to true if you only want to download, not print
-  filename: 'FoxtrailMap'
+  position: 'bottomright',
+  sizeModes: [ 'A4Portrait', 'A4Landscape'],
+  // exportOnly: true, // set to true if you only want to download, not print
+  // filename: 'FoxtrailMap'
 }).addTo(map);
 
 </script>
