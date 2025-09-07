@@ -8,67 +8,6 @@
 		<time>2025-09-07T11:31:10Z</time>
 		<desc></desc>
 	</metadata>
-	<wpt lat="46.1841877466" lon="8.9914360934">
-		<ele>242.9</ele>
-		<name>Starting point</name>
-		<extensions>
-			<swisstopo:waypoint_id>1</swisstopo:waypoint_id>
-			<swisstopo:waypoint_routepoint_id>2004228640</swisstopo:waypoint_routepoint_id>
-			<swisstopo:waypoint_meters_into_tour>0.000000</swisstopo:waypoint_meters_into_tour>
-			<swisstopo:waypoint_is_controlpoint>1</swisstopo:waypoint_is_controlpoint>
-		</extensions>
-	</wpt>
-	<wpt lat="46.1869252793" lon="8.9901277367">
-		<ele>322.0</ele>
-		<name>Waypoint</name>
-		<extensions>
-			<swisstopo:waypoint_id>2102379645</swisstopo:waypoint_id>
-			<swisstopo:waypoint_routepoint_id>230420074</swisstopo:waypoint_routepoint_id>
-			<swisstopo:waypoint_meters_into_tour>564.639345</swisstopo:waypoint_meters_into_tour>
-			<swisstopo:waypoint_is_controlpoint>1</swisstopo:waypoint_is_controlpoint>
-		</extensions>
-	</wpt>
-	<wpt lat="46.1851939870" lon="8.9671300385">
-		<ele>637.4</ele>
-		<name>Waypoint</name>
-		<extensions>
-			<swisstopo:waypoint_id>1036120085</swisstopo:waypoint_id>
-			<swisstopo:waypoint_routepoint_id>1436393199</swisstopo:waypoint_routepoint_id>
-			<swisstopo:waypoint_meters_into_tour>2849.388575</swisstopo:waypoint_meters_into_tour>
-			<swisstopo:waypoint_is_controlpoint>1</swisstopo:waypoint_is_controlpoint>
-		</extensions>
-	</wpt>
-	<wpt lat="46.1934009296" lon="8.9744635520">
-		<ele>697.8</ele>
-		<name>Waypoint</name>
-		<extensions>
-			<swisstopo:waypoint_id>1305414406</swisstopo:waypoint_id>
-			<swisstopo:waypoint_routepoint_id>725658233</swisstopo:waypoint_routepoint_id>
-			<swisstopo:waypoint_meters_into_tour>4643.890621</swisstopo:waypoint_meters_into_tour>
-			<swisstopo:waypoint_is_controlpoint>1</swisstopo:waypoint_is_controlpoint>
-		</extensions>
-	</wpt>
-	<wpt lat="46.1939555012" lon="8.9928538749">
-		<ele>596.5</ele>
-		<name>Waypoint</name>
-		<extensions>
-			<swisstopo:waypoint_id>1672062385</swisstopo:waypoint_id>
-			<swisstopo:waypoint_routepoint_id>711163734</swisstopo:waypoint_routepoint_id>
-			<swisstopo:waypoint_meters_into_tour>7029.269183</swisstopo:waypoint_meters_into_tour>
-			<swisstopo:waypoint_is_controlpoint>1</swisstopo:waypoint_is_controlpoint>
-		</extensions>
-	</wpt>
-	<wpt lat="46.1845124884" lon="8.9927913190">
-		<ele>247.5</ele>
-		<name>Destination</name>
-		<extensions>
-			<swisstopo:waypoint_id>642241160</swisstopo:waypoint_id>
-			<swisstopo:waypoint_routepoint_id>1580066933</swisstopo:waypoint_routepoint_id>
-			<swisstopo:waypoint_meters_into_tour>8952.653625</swisstopo:waypoint_meters_into_tour>
-			<swisstopo:waypoint_is_controlpoint>1</swisstopo:waypoint_is_controlpoint>
-			<swisstopo:waypoint_stage_before distance="8952.653625" duration="12309.205121" ascent="667.064148" descent="662.464142" />
-		</extensions>
-	</wpt>
 	<trk>
 		<name>Swisstopo Route</name>
 		<trkseg>
