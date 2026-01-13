@@ -6,9 +6,9 @@ title: Home
 # GIACOMO BORIN
 
 Hello, I'm Giacomo. I enjoy Algebra and Cryptograph. Currently, I am pursuing a 
-Ph.D. at the University of Zurich in the Applied Algebra group, while also 
-working as a Pre Doc researcher at IBM Research Zurich within the Foundations of 
-Cryptography group, under the supervision of [Luca De Feo](defeo.lu).
+Ph.D. at the University of Zurich in the [Applied Algebra group](https://www.math.uzh.ch/aa/home), while also 
+working as a Pre Doc researcher at [IBM Research Zurich](https://research.ibm.com/labs/zurich) within the Foundations of 
+Cryptography group, under the supervision of [Luca De Feo](https://defeo.lu/).
 
 My mathematical pursuits primarily revolve around isogenies and isomorphism 
 problems associated with coding theory. The objective of my research is to 
