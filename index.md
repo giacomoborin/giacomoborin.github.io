@@ -83,10 +83,10 @@ Here, you can find my:
       {{ pub.year }}:
       {{ pub.title }}, 
       <i> {{ pub.venue }}</i>.
-      [<a href="{{ pub.url }}">more</a>]
       {% if pub.link %}
          [<a href="{{ pub.link }}">url</a>],
       {% endif %}
+      [<a href="{{ pub.url }}">more</a>]
     </li>
   {% endfor %}
 </ul>
