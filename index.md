@@ -84,6 +84,9 @@ Here, you can find my:
       {{ pub.title }}, 
       <i> {{ pub.venue }}</i>.
       [<a href="{{ pub.url }}">more</a>]
+      {% if pub.link %}
+         [<a href="{{ pub.link }}">url</a>],
+      {% endif %}
     </li>
   {% endfor %}
 </ul>
