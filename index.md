@@ -19,7 +19,7 @@ assumptions.
 Here, you can find my:
 - email: `crypto at gbor dot in`;
 - [github](https://github.com/giacomoborin): @giacomoborin;
-- [publications](#pubs);
+- [publications](#pubs) (later also [preprints](#preprints));
 - [talks](#talks);
 - [teaching records](#teach);
 - [full CV](/cv/);
@@ -32,8 +32,14 @@ Here, you can find my:
 
 <ol>
   {% assign pubs = site.publications | sort: "date" | reverse %}
-  {% assign count = pubs | size %}
+  {% assign count = 0 %}
   {% for pub in pubs %}
+    {% unless pub.public == false or pub.preprint == true %}
+        {% assign count = count | plus: 1 %}
+    {% endunless %}
+  {% endfor %}
+  {% for pub in pubs %}
+    {% unless pub.public == false or pub.preprint == true %}
     <li value="{{ count }}">
       <strong>{{ pub.title }}</strong>, 
       {{ pub.authors }}, 
@@ -51,6 +57,40 @@ Here, you can find my:
       <!-- [<a href="{{ pub.url }}">more</a>] -->
       {% assign count = count | minus: 1 %}
     </li>
+    {% endunless %}
+  {% endfor %}
+</ol>
+
+<a id="preprints"></a>
+### Preprints
+
+<ol>
+  {% assign preprints = site.publications | sort: "date" | reverse %}
+  {% assign preprint_count = 0 %}
+  {% for pub in preprints %}
+    {% if pub.preprint == true %}
+      {% unless pub.public == false %}
+        {% assign preprint_count = preprint_count | plus: 1 %}
+      {% endunless %}
+    {% endif %}
+  {% endfor %}
+  {% for pub in preprints %}
+    {% if pub.preprint == true %}
+      {% unless pub.public == false %}
+    <li value="{{ preprint_count }}">
+      <strong>{{ pub.title }}</strong>, 
+      {{ pub.authors }}, 
+      {% if pub.paperurl %}
+         [<a href="{{ pub.paperurl }}">paper</a>]
+      {% endif %}
+      {% if pub.code %}
+         [<a href="{{ pub.code }}">code</a>]
+      {% endif %}
+      <!-- [<a href="{{ pub.url }}">more</a>] -->
+      {% assign preprint_count = preprint_count | minus: 1 %}
+    </li>
+      {% endunless %}
+    {% endif %}
   {% endfor %}
 </ol>
 
