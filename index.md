@@ -4,6 +4,8 @@ title: Home
 ---
 
 # GIACOMO BORIN
+**/ˈdʒaːkomo boˈrin/**
+
 
 Hello, I'm Giacomo. I enjoy Algebra and Cryptograph. Currently, I am pursuing a 
 Ph.D. at the University of Zurich in the [Applied Algebra group](https://www.math.uzh.ch/aa/home), while also 
