@@ -20,7 +20,8 @@ assumptions.
 
 Here, you can find my:
 - email: `crypto at gbor dot in`;
-- [github](https://github.com/giacomoborin): @giacomoborin;
+- github: [@giacomoborin](https://github.com/giacomoborin);
+- orcid: [0009-0001-7311-3802](https://orcid.org/0009-0001-7311-3802);
 - [publications](#pubs) (later also [preprints](#preprints));
 - [talks](#talks);
 - [teaching records](#teach);
