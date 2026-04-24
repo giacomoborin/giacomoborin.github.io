@@ -2,17 +2,17 @@
 title: "Optimizing and Implementing Threshold MAYO "
 collection: publications
 permalink: /publication/th-mayo-ches-2026/
-excerpt: 'Brief description of the paper'
+excerpt: 'In this work we improve and implement Threshold MAYO and UOV'
 date: 2026-04-20
-venue: 'Conference or Journal Name'
-paperurl: 'https://eprint.iacr.org/YYYY/XXX'
+venue: 'To appear in CHES 2026 vol. 3'
+paperurl: 'https://eprint.iacr.org/2026/710'
 citation: 'D. Aranha, G. Borin, S. Celi and G. Niot. "Optimizing and Implementing Threshold MAYO". <i>Conference or Journal Name</i>.'
 authors: 'D. Aranha, G. Borin, S. Celi and G. Niot'
 layout: default
-public: false
-preprint: true
+public: true
+preprint: false
 doi: 
-code: 
+code: https://github.com/pqcvinaigrette/vinaigrette-go
 award: 
 ---
 
