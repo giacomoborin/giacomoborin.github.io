@@ -3,14 +3,14 @@ title: "The SQInstructor: a guide to SQIsign and the Deuring Correspondence with
 collection: publications
 permalink: /publication/sqinstructor/
 excerpt: 'Generalization of SQIsign using level structures and a new explicit Deuring correspondence for supersingular elliptic curves with level structures.'
-date: 0000-12-25
-venue: 'Cryptology ePrint Archive'
+date: 2026-05-09
+venue: 'to appear in CRYPTO 2026'
 paperurl: 'https://eprint.iacr.org/2026/493'
 citation: 'Borin G., De Feo L., Lido G. M., Schaeffler S. "The SQInstructor: a guide to SQIsign and the Deuring Correspondence with level structures". <i>Cryptology Eprint Archive</i>.'
 authors: 'G. Borin, L. De Feo, G. M. Lido, S. Schaeffler'
 layout: default
 public: true
-preprint: true
+preprint: false
 doi: 
 code: https://github.com/SQInstructors/SQInstructor
 award: 
