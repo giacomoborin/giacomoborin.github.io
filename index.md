@@ -103,15 +103,22 @@ Here, you can find my:
 <ul>
   {% assign talks = site.talks | sort: "date" | reverse %}
   {% for pub in talks %}
-    <li>
-      {{ pub.date | date: "%Y-%m" }}:
-      {{ pub.title }}, 
-      <i> {{ pub.venue }}</i>.
-      {% if pub.link %}
-         [<a href="{{ pub.link }}">url</a>],
-      {% endif %}
-      [<a href="{{ pub.url }}">more</a>]
-    </li>
+      {% unless pub.publish == false %}
+        <li>
+          {{ pub.date | date: "%Y-%m" }}:
+          {{ pub.title }}, 
+          <i> {{ pub.venue }}</i>.
+          {% if pub.link %}
+             [<a href="{{ pub.link }}">url</a>]
+          {% endif %}
+          {% if pub.slides %}
+             [<a href="{{ pub.slides }}">slides</a>]
+          {% endif %}
+          {% if pub.more == true %}
+             [<a href="{{ pub.url }}">more</a>]
+          {% endif %}
+        </li>
+      {% endunless %}
   {% endfor %}
 </ul>
 

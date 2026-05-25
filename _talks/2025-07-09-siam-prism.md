@@ -7,5 +7,6 @@ venue: "SIAM-AG 2025"
 date: 2025-07-09
 location: "Madison, WI, United States"
 layout: default
+publish: true
 ---
 
