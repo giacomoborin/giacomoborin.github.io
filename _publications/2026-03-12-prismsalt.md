@@ -4,13 +4,13 @@ collection: publications
 permalink: /publication/2026-prismsalt
 excerpt: 'Improvement of PRISM using a salt and a strongly unforgeable variant'
 date: 2026-03-12
-venue: 'Cryptology ePrint Archive'
+venue: 'to appear in Journal of Cryptology'
 paperurl: 'https://eprint.iacr.org/2026/443'
 citation: 'Basso, A., Borin, G., Castryck, W., Santos, M.C.R., Invernizzi, R., Leroux, A., Maino, L., Vercauteren, F. and Wesolowski, B., "PRISM with a pinch of salt: Simple, Efficient and Strongly Unforgeable Signatures from Isogenies." <i> Cryptology ePrint Archive. </i>'
 authors: 'A. Basso, G. Borin, W. Castryck, M. C.-R. Santos, R. Invernizzi, A. Leroux, L. Maino, F. Vercauteren, B. Wesolowski'
 layout: default
 public: true
-preprint: true
+preprint: false
 doi: 
 code: https://github.com/mariascrs/PRISM_v2
 award: 
